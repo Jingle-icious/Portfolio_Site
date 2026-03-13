@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Satellite Analytics Workbench",
+    "description": "A high-density data visualization tool featuring complex filtering logic and a master-detail selection area.",
+    "tags": ["UX Design", "Data Viz", "React"],
+    "link": "#",
+    "image": "assets/project1.jpg"
+  },
+  {
+    "title": "The Weaver's Tale",
+    "description": "A branching narrative engine built with JavaScript, focusing on custom CSS animations and JSON-driven story states.",
+    "tags": ["Narrative Design", "JS", "CSS"],
+    "link": "#",
+    "image": "assets/project2.jpg"
+  },
+  {
+    "title": "Animal Shelter Operations",
+    "description": "A comprehensive policy and workflow redesign for animal relinquishment and adoption event procedures.",
+    "tags": ["Service Design", "Policy", "UXR"],
+    "link": "#",
+    "image": "assets/project3.jpg"
+  }
+]
