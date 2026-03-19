@@ -6,13 +6,26 @@
     "link": "#",
     "image": "assets/project1.jpg"
   },
-  {
-    "title": "The Weaver's Tale",
-    "description": "A branching narrative engine built with JavaScript, focusing on custom CSS animations and JSON-driven story states.",
-    "tags": ["Narrative Design", "JS", "CSS"],
-    "link": "#",
-    "image": "assets/project2.jpg"
+{
+  "title": "Through the Quiet Lens",
+  "date": "Capstone 2025",
+  "image": "images/quiet-lens-hero.jpg",
+  "embed": "https://www.youtube.com/embed/YsDHRbhUaVM",
+  "description": "A web-based visual novel exploring student stress and anxiety. Powered by a custom-built, data-driven narrative engine designed for extensible storytelling and branching paths.",
+  "full_description": "Through the Quiet Lens is a web-based visual novel game that explores themes of mental health with respect to college student stress and anxiety. The storyline allows for a choose-your-own-adventure experience through a data-driven narrative engine that handles branching story states and original hand-drawn character assets.",
+  "links": {
+    "play": "https://jingle-icious.github.io/ThroughTheQuietLens/",
+    "github": "https://github.com/Jingle-icious/ThroughTheQuietLens",
+    "figma": "https://www.figma.com/design/tYyZFGn3DawHSbcv8aEPD3/Capstone_Stuff?node-id=0-1"
   },
+  "tags": ["JavaScript", "JSON", "CSS3", "Narrative Design", "Digital Character Design"],
+  "features": [
+    "Custom-built JSON-driven narrative engine",
+    "Branching dialogue and state-based story paths",
+    "Original character design and digital assets",
+    "Optimized UI/UX for immersive storytelling"
+  ]
+},
   {
     "title": "Animal Shelter Operations",
     "description": "A comprehensive policy and workflow redesign for animal relinquishment and adoption event procedures.",

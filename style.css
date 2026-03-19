@@ -94,6 +94,25 @@ body {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
+/* --- Project Tags --- */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* This provides the horizontal and vertical spacing */
+    margin-top: auto; /* Pushes tags to the bottom of the card */
+}
+
+.tags span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
 .card-image { aspect-ratio: 16/10; background: var(--bg-alt); border-bottom: 1px solid var(--border); background-size: cover; background-position: center; }
 .card-content { padding: 1.5rem; }
 .card-content h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #fff; }
@@ -129,6 +148,34 @@ body {
 }
 
 .cta-button:hover { background: #4f46e5; transform: translateY(-2px); }
+
+.back-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+#detail-features ul {
+    list-style: none;
+    color: var(--text-muted);
+    margin-top: 1rem;
+}
+
+#detail-features li {
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--accent);
+}
 
 /* --- ABOUT PAGE (3-COLUMN DASHBOARD) --- */
 .about-section { padding: 0 5% 100px; }
