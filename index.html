@@ -22,8 +22,7 @@
             <p>UX Designer at <strong>LMI</strong> specializing in high-density data visualization for the <strong>RAPTR®</strong> project within the Space Market.</p>
         </header>
 
-        <main id="work" class="project-grid">
-            </main>
+        <main id="work" class="project-grid"></main>
 
         <section class="short-about">
             <div class="short-about-card">
@@ -39,22 +38,20 @@
         </section>
     </div>
 
-  <div id="about-page" class="page-content">
+    <div id="about-page" class="page-content">
         <section class="about-hero">
             <h1>About Me</h1>
         </section>
 
         <section class="about-section">
             <div class="about-container">
-                <div class="about-col-text">
+                <div class="about-column">
                     <p>I am a Junior UX Designer at <strong>LMI</strong>, currently dedicated to the <strong>RAPTR®</strong> project. My expertise lies at the intersection of complex data visualization and mission-critical operations within the <strong>Space Market</strong>.</p>
-                    
                     <p>My journey into UX began during high school while interning for <strong>MITRE</strong>. Working on space-related projects there sparked a deep interest in how design can make specialized, high-stakes data accessible and functional.</p>
-                    
                     <p>I pursued an accelerated path at the <strong>University of Colorado Boulder</strong>, earning my B.S. in Creative Technology & Design in just three years. During this time, I secured an internship at <strong>LMI</strong> the summer after my freshman year, maintaining the role throughout my junior and senior years until graduating in May 2025 and transitioning to full-time.</p>
                 </div>
 
-                <div class="about-col-timeline">
+                <div class="about-column">
                     <div class="experience-timeline">
                         <div class="timeline-item">
                             <span class="date">2025 - Present</span>
@@ -79,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="about-col-image">
+                <div class="about-column">
                     <div class="image-frame">
                         <img src="images/evelyn_pretty.jpg" alt="Evelyn" class="profile-img">
                     </div>
@@ -93,32 +90,48 @@
             <button onclick="showPage('home')" class="back-btn">← Back to Work</button>
             <h1 id="detail-title">Project Title</h1>
         </div>
+
         <section class="about-section">
             <div class="about-container">
                 <div class="about-column">
-                    <h1 id="detail-title"></h1>
-                        <div id="detail-description"></div>
-                        </div>
-                    <div class="about-column" id="detail-features"></div>
+                    <div id="detail-description"></div>
+                </div>
+                <div class="about-column" id="detail-features"></div>
+                
+                <div class="about-column">
                     <div class="image-frame">
+                        </div>
                 </div>
             </div>
 
-             <div class="full-width-gallery">
+            <div class="full-width-gallery">
                 <h4>Project Screenshots</h4>
-            <div class="screenshot-grid" id="detail-gallery"></div>
+                <div class="screenshot-grid" id="detail-gallery"></div>
             </div>
         </section>
-    <section class="process-section" id="detail-process">
-    </section>
+
+        <section class="process-section" id="detail-process"></section>
+
+        <section class="process-section" id="drawing-carousel-section">
+            <div class="short-about-content">
+                <h2 id="carousel-title"></h2>
+                <p id="carousel-desc"></p>
+            
+                <div class="carousel-container">
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="carousel-track"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     
     <div id="image-modal" class="modal">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <button class="modal-prev" onclick="changeImage(-1)">&#10094;</button>
-    <img class="modal-content" id="modal-img">
-    <button class="modal-next" onclick="changeImage(1)">&#10095;</button>
-</div>
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <button class="modal-prev" onclick="changeImage(-1)">&#10094;</button>
+        <img class="modal-content" id="modal-img">
+        <button class="modal-next" onclick="changeImage(1)">&#10095;</button>
+    </div>
 
     <footer class="legend-footer">
         <div class="legend-item"><strong>Current:</strong> UX Designer @ LMI</div>
