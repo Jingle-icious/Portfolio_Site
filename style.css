@@ -383,3 +383,30 @@ body {
 .about-container {
     align-items: flex-start; /* Keeps columns aligned at the top */
 }
+
+.process-section {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 6rem 5%;
+    background: var(--bg-card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+}
+
+.process-section h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-section p {
+    font-size: 1.25rem; /* Matches your large description size */
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 900px;
+    margin: 0 auto;
+}

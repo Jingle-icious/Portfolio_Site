@@ -66,6 +66,24 @@ function showPage(pageId, projectData = null) {
             } else {
                 galleryGrid.innerHTML = ''; // Clear if no gallery exists
             }
+
+            // 5. Writing Process Injection
+            const processContainer = document.getElementById('detail-process');
+            if (processContainer) {
+                if (projectData.writing_process) {
+                    processContainer.innerHTML = `
+                        <div class="short-about-content" style="max-width: 1000px; margin: 0 auto;">
+                            <h2>${projectData.writing_process.title}</h2>
+                            <p>${projectData.writing_process.content} 
+                                ${projectData.writing_process.doc_link ? `<a href="${projectData.writing_process.doc_link}" target="_blank" style="color: var(--accent); text-decoration: underline;">${projectData.writing_process.link_text}</a>` : ''}
+                            </p>
+                        </div>
+                    `;
+                    processContainer.style.display = 'block';
+                } else {
+                    processContainer.style.display = 'none';
+                }
+            }
         }
     }
 
