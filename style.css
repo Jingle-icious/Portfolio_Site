@@ -149,15 +149,19 @@ body {
 
 .cta-button:hover { background: #4f46e5; transform: translateY(-2px); }
 
+/* Tactical Back Button Styling */
 .back-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    background: #1a1f2e;
+    border: 1px solid #30364d;
+    color: #8a94ad;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
     cursor: pointer;
-    margin-bottom: 2rem;
-    transition: var(--transition);
+    transition: all 0.2s;
+    font-family: inherit;
 }
 
 .back-btn:hover {
@@ -506,3 +510,4 @@ body {
     border-color: var(--accent);
     color: var(--accent);
 }
+
