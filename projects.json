@@ -9,10 +9,10 @@
 {
   "title": "Through the Quiet Lens",
   "date": "Capstone 2025",
-  "image": "images/quiet-lens-hero.jpg",
+  "image": "images/Title_Screenshot.png",
   "embed": "https://www.youtube.com/embed/YsDHRbhUaVM",
   "description": "A web-based visual novel exploring student stress and anxiety. Powered by a custom-built, data-driven narrative engine designed for extensible storytelling and branching paths.",
-  "full_description": "Through the Quiet Lens is a web-based visual novel game that explores themes of mental health with respect to college student stress and anxiety. The storyline allows for a choose-your-own-adventure experience through a data-driven narrative engine that handles branching story states and original hand-drawn character assets.",
+  "full_description": "Through the Quiet Lens is a web-based visual novel game that explores a theme of mental health with respect to college student stress and anxiety. The storyline narrative allows the player to choose-their-own-adventure by selecting choices to the story's scenarios. Designed with all original art and an easy and intuitive user experience, the gameplay is easy and balances storytelling and visual aesthetics. Featuring a data-driven and extensible narrative engine, the concept can be reused for new storylines catering to a large range of demographics. The richly emotional and introspective journey is grounded in relatable experiences and offers practical and insightful outcomes.",
   "links": {
     "play": "https://jingle-icious.github.io/ThroughTheQuietLens/",
     "github": "https://github.com/Jingle-icious/ThroughTheQuietLens",
@@ -24,7 +24,21 @@
     "Branching dialogue and state-based story paths",
     "Original character design and digital assets",
     "Optimized UI/UX for immersive storytelling"
-  ]
+  ],
+  "gallery": [
+  "images/Title_Screenshot.png",
+  "images/screenshot_1.gif",
+  "images/screenshot_2.webp",
+  "images/screenshot_3.png",
+  "images/screenshot_4.webp",
+  "images/screenshot_5.webp",
+  "images/screenshot_6.webp",
+  "images/screenshot_7.webp",
+  "images/screenshot_8.webp",
+  "images/screenshot_9.gif",
+  "images/screenshot_10.webp",
+  "images/screenshot_11.webp"
+]
 },
   {
     "title": "Animal Shelter Operations",

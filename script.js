@@ -1,58 +1,87 @@
-// Function to switch between Home, About, and Project Details
+// --- Global Gallery State ---
+let currentGallery = [];
+let currentImageIndex = 0;
+
+/**
+ * Function to switch between Home, About, and Project Details
+ * @param {string} pageId - The ID of the page (home, about, project-detail)
+ * @param {object} projectData - The project object from JSON
+ */
 function showPage(pageId, projectData = null) {
     // Hide all pages
     document.querySelectorAll('.page-content').forEach(page => {
         page.classList.remove('active');
     });
 
-    // If we are opening a project detail page, populate it with data first
-if (pageId === 'project-detail' && projectData) {
-    const detailPage = document.getElementById('project-detail-page');
-    if (detailPage) {
-        document.getElementById('detail-title').innerText = projectData.title;
-        document.getElementById('detail-description').innerHTML = `<p>${projectData.full_description || projectData.description}</p>`;
+    // If opening project detail page, populate with specific project data
+    if (pageId === 'project-detail' && projectData) {
+        const detailPage = document.getElementById('project-detail-page');
         
-        // Handle Video vs Image
-        const imageFrame = detailPage.querySelector('.image-frame');
-        if (projectData.embed) {
-            imageFrame.innerHTML = `<iframe width="100%" height="100%" src="${projectData.embed}" frameborder="0" allowfullscreen></iframe>`;
-        } else {
-            imageFrame.innerHTML = `<img src="${projectData.image}" class="profile-img">`;
-        }
+        if (detailPage) {
+            // 1. Basic Info
+            document.getElementById('detail-title').innerText = projectData.title;
+            document.getElementById('detail-description').innerHTML = `<p>${projectData.full_description || projectData.description}</p>`;
+            
+            // 2. Media Toggle (Video Embed vs. Static Image)
+            const imageFrame = detailPage.querySelector('.image-frame');
+            if (projectData.embed) {
+                imageFrame.innerHTML = `
+                    <iframe width="100%" height="100%" src="${projectData.embed}" 
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                    encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                imageFrame.innerHTML = `<img src="${projectData.image}" class="profile-img" alt="${projectData.title}">`;
+            }
 
-        // Handle Features and Links in the right column
-        const featuresContainer = document.getElementById('detail-features');
-        let linksHTML = '';
-        if (projectData.links) {
-            linksHTML = `
-                <div style="margin-top: 2rem;">
-                    <h4>Project Links</h4>
-                    <div style="display: flex; gap: 10px; margin-top: 10px;">
-                        ${projectData.links.play ? `<a href="${projectData.links.play}" class="back-btn" target="_blank">Play Game</a>` : ''}
-                        ${projectData.links.github ? `<a href="${projectData.links.github}" class="back-btn" target="_blank">GitHub</a>` : ''}
-                        ${projectData.links.figma ? `<a href="${projectData.links.figma}" class="back-btn" target="_blank">Figma</a>` : ''}
+            // 3. Features & Links
+            const featuresContainer = document.getElementById('detail-features');
+            let linksHTML = '';
+            if (projectData.links) {
+                linksHTML = `
+                    <div class="detail-links-container" style="margin-top: 2rem;">
+                        <h4>Project Links</h4>
+                        <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                            ${projectData.links.play ? `<a href="${projectData.links.play}" class="back-btn" target="_blank">Play Game</a>` : ''}
+                            ${projectData.links.github ? `<a href="${projectData.links.github}" class="back-btn" target="_blank">GitHub</a>` : ''}
+                            ${projectData.links.figma ? `<a href="${projectData.links.figma}" class="back-btn" target="_blank">Figma</a>` : ''}
+                        </div>
+                    </div>`;
+            }
+
+            featuresContainer.innerHTML = `
+                <h4>Key Features</h4>
+                <ul>${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                ${linksHTML}
+            `;
+
+            // 4. Screenshot Gallery Injection
+            const galleryGrid = document.getElementById('detail-gallery');
+            if (projectData.gallery && projectData.gallery.length > 0) {
+                currentGallery = projectData.gallery; // Store for modal navigation
+                galleryGrid.innerHTML = projectData.gallery.map((img, index) => `
+                    <div class="gallery-item" onclick="openModal(${index})">
+                        <img src="${img}" alt="Project Screenshot ${index + 1}">
                     </div>
-                </div>`;
+                `).join('');
+            } else {
+                galleryGrid.innerHTML = ''; // Clear if no gallery exists
+            }
         }
-
-        featuresContainer.innerHTML = `
-            <h4>Key Features</h4>
-            <ul>${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>
-            ${linksHTML}
-        `;
     }
-}
+
     // Show the requested page
     const activePage = document.getElementById(`${pageId}-page`);
     if (activePage) {
         activePage.classList.add('active');
     }
 
-    // Scroll to top
+    // Always reset scroll to top
     window.scrollTo(0, 0);
 }
 
-// Function to load projects from JSON
+/**
+ * Loads projects from JSON and renders cards to the home grid
+ */
 async function loadProjects() {
     try {
         const response = await fetch('./projects.json');
@@ -66,7 +95,7 @@ async function loadProjects() {
             const card = document.createElement('article');
             card.className = 'project-card';
             
-            // Instead of an <a> tag link, we use a click listener to trigger showPage
+            // Set up click event to transition to the detail view
             card.onclick = () => showPage('project-detail', project);
 
             card.innerHTML = `
@@ -85,6 +114,45 @@ async function loadProjects() {
         console.error("Error loading project data:", error);
     }
 }
+
+// --- Modal Gallery Controls ---
+
+function openModal(index) {
+    currentImageIndex = index;
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    if (modal && modalImg) {
+        modal.style.display = "block";
+        modalImg.src = currentGallery[currentImageIndex];
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('image-modal');
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+function changeImage(n) {
+    currentImageIndex += n;
+    if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
+    if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
+    
+    const modalImg = document.getElementById('modal-img');
+    if (modalImg) {
+        modalImg.src = currentGallery[currentImageIndex];
+    }
+}
+
+// Close modal on escape key
+window.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") changeImage(1);
+    if (e.key === "ArrowLeft") changeImage(-1);
+});
 
 // Init
 window.addEventListener('DOMContentLoaded', () => {

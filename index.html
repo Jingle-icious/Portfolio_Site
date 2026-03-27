@@ -93,18 +93,30 @@
             <button onclick="showPage('home')" class="back-btn">← Back to Work</button>
             <h1 id="detail-title">Project Title</h1>
         </div>
-        <section class="about-section">
-            <div class="about-container">
-                <div class="about-text" id="detail-description">
-                </div>
-                <div class="about-timeline" id="detail-features">
-                </div>
-                <div class="image-frame">
-                    <img id="detail-image" src="" alt="Project Preview" class="profile-img">
-                </div>
+       <section class="about-section">
+    <div class="about-container">
+        <div class="about-column">
+            <h1 id="detail-title"></h1>
+            <div id="detail-description"></div>
+        </div>
+        <div class="about-column" id="detail-features"></div>
+        <div class="image-frame">
             </div>
-        </section>
     </div>
+
+    <div class="full-width-gallery">
+        <h4>Project Screenshots</h4>
+        <div class="screenshot-grid" id="detail-gallery"></div>
+    </div>
+</section>
+    </div>
+    
+    <div id="image-modal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <button class="modal-prev" onclick="changeImage(-1)">&#10094;</button>
+    <img class="modal-content" id="modal-img">
+    <button class="modal-next" onclick="changeImage(1)">&#10095;</button>
+</div>
 
     <footer class="legend-footer">
         <div class="legend-item"><strong>Current:</strong> UX Designer @ LMI</div>

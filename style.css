@@ -259,3 +259,127 @@ body {
     .legend-footer { width: 90%; gap: 1rem; padding: 0.8rem 1.5rem; justify-content: space-around; }
 }
 
+.full-width-gallery {
+    max-width: 1400px;
+    margin: 4rem auto 0;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+}
+
+.full-width-gallery h4 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.screenshot-grid {
+    display: grid;
+    /* This allows 2 large images per row on smaller screens, 
+       and up to 3 or 4 on desktop */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix for mobile so they don't get too small */
+@media (max-width: 768px) {
+    .screenshot-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.modal-prev, .modal-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    background: rgba(99, 102, 241, 0.2);
+    border: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.modal-prev { left: 5%; }
+.modal-next { right: 5%; }
+.modal-prev:hover, .modal-next:hover { background: var(--accent); }
+
+/* Target the description paragraph in the detail view */
+#detail-description p {
+    font-size: 1.25rem; /* Increased from base 1.15rem */
+    line-height: 1.8;   /* Extra breathing room for long descriptions */
+    color: var(--text-main); /* Pop it more against the dark background */
+    margin-bottom: 2rem;
+    max-width: 100%;    /* Allow it to fill the column width */
+}
+
+/* Optional: Make the "Key Features" headers match the scale */
+.about-column h4 {
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+/* Adjusting the grid alignment to handle the larger text */
+.about-container {
+    align-items: flex-start; /* Keeps columns aligned at the top */
+}
