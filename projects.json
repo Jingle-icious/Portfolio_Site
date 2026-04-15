@@ -62,6 +62,70 @@
         "images/sage_process_5.webp",
         "images/sage_process_6.webp"
     ]
+},
+  "artwork_gallery": {
+    "title": "Artwork Gallery",
+    "description": "All drawings that I created for the project. Starting with background images, then NPCS, then Sage variants.",
+    "background_and_npc_art": {
+      "title": "Background and NPC Art",
+      "images": [
+        "images/Background_Images/Title_Official.png",
+        "images/Background_Images/Campus_Main.png",
+        "images/Background_Images/Lobby_Main.png",
+        "images/Background_Images/Dorm_Main.png",
+        "images/Background_Images/Dorm_Sage_Sitting.png",
+        "images/Background_Images/Dorm_Sage_Sleeping.png",
+        "images/Background_Images/Classroom_Main.png",
+        "images/Background_Images/Dream1.png",
+        "images/Background_Images/Smoke_Backround.png",
+        "images/Background_Images/Dream1_banner.png",
+        "images/Background_Images/Dream_Ferris_Main.png",
+        "images/Background_Images/Dream_Eatery_Main.png",
+        "images/Background_Images/Dream_PerfContest_Main.png",
+        "images/Background_Images/Dream_Pie_Main.png",
+        "images/Background_Images/HappyArt.png",
+        "images/Background_Images/StressArt.png",
+        "images/NPC_Images/Blake_Smile.png",
+        "images/NPC_Images/Blake_Frown.png",
+        "images/NPC_Images/Blake_Ooh.png",
+        "images/NPC_Images/Blake_Talk.png",
+        "images/NPC_Images/NPC1.png",
+        "images/NPC_Images/NPC2.png",
+        "images/NPC_Images/NPC3_sil.png",
+        "images/NPC_Images/Sharma_smile.png",
+        "images/NPC_Images/Sharma_frown.png",
+        "images/NPC_Images/Sharma_slightfrown.png",
+        "images/NPC_Images/Sharma_ooh.png",
+        "images/NPC_Images/Sharma_talk.png"
+      ]
+    },
+    "sage_artwork": {
+      "title": "Sage Artwork",
+      "images": [
+        "images/Sage_Images/SageVar1_smile.png",
+        "images/Sage_Images/SageVar1_frown.png",
+        "images/Sage_Images/SageVar1_surprised.png",
+        "images/Sage_Images/SageVar1_talk.png",
+        "images/Sage_Images/SageVar1_sil.png",
+        "images/Sage_Images/SageVar3_closedmouth.png",
+        "images/Sage_Images/SageVar3_crying.png",
+        "images/Sage_Images/SageVar3_glazedover.png",
+        "images/Sage_Images/SageVar3_squigglemouth.png",
+        "images/Sage_Images/SageVar3_stressteeth.png",
+        "images/Sage_Images/SageVar3_talk.png",
+        "images/Sage_Images/SageVar4_antisocial.png",
+        "images/Sage_Images/SageVar4_antisocial_bubble.png",
+        "images/Sage_Images/SageVar5_perfectionist.png",
+        "images/Sage_Images/SageVar5_perfectionist_bubble.png",
+        "images/Sage_Images/SageVar6_imposter_teeth.png",
+        "images/Sage_Images/SageVar6_imposter_bubble.png",
+        "images/Sage_Images/SageVar7_pleaser_smile.png",
+        "images/Sage_Images/SageVar7_pleaser_frown.png",
+        "images/Sage_Images/SageVar7_pleaser_talk.png",
+        "images/Sage_Images/SageVar7_Pleaser_bubble.png"
+
+      ]
+    }
 }
 },
   {

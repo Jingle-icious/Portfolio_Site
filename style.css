@@ -506,8 +506,16 @@ body {
     transition: var(--transition);
 }
 
-.project-link-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+.artwork-subsection {
+    margin-bottom: 4rem;
+}
+
+.artwork-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.02em;
 }
 

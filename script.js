@@ -7,6 +7,21 @@ let carouselIndex = 0;
 let carouselImages = [];
 let carouselTimer;
 
+// Artwork Carousel State
+let artworkCarouselIndex = 0;
+let artworkCarouselImages = [];
+let artworkCarouselTimer;
+
+// Background and NPC Carousel State
+let backgroundNpcCarouselIndex = 0;
+let backgroundNpcCarouselImages = [];
+let backgroundNpcCarouselTimer;
+
+// Sage Artwork Carousel State
+let sageArtworkCarouselIndex = 0;
+let sageArtworkCarouselImages = [];
+let sageArtworkCarouselTimer;
+
 /**
  * Function to switch between Home, About, and Project Details
  * @param {string} pageId - The ID of the page (home, about, project-detail)
@@ -125,6 +140,76 @@ if (drawSection && track && projectData.drawing_process) {
     startCarouselAutoPlay();
     drawSection.style.display = 'block';
 }
+
+// 7. Artwork Gallery Sliding Carousel Injection
+const artworkSection = document.getElementById('artwork-carousel-section');
+const backgroundNpcTrack = document.getElementById('background-npc-carousel-track');
+const sageArtworkTrack = document.getElementById('sage-artwork-carousel-track');
+
+if (artworkSection && backgroundNpcTrack && sageArtworkTrack && projectData.artwork_gallery) {
+    document.getElementById('artwork-carousel-title').innerText = projectData.artwork_gallery.title;
+    document.getElementById('artwork-carousel-desc').innerText = projectData.artwork_gallery.description;
+    
+    // Background and NPC Art Carousel
+    if (projectData.artwork_gallery.background_and_npc_art) {
+        const backgroundNpcContainer = backgroundNpcTrack.parentElement.parentElement;
+        
+        // Remove old buttons if they exist
+        backgroundNpcContainer.querySelectorAll('.carousel-nav-btn').forEach(btn => btn.remove());
+
+        // Create and add navigation buttons
+        const backgroundNpcPrevBtn = document.createElement('button');
+        backgroundNpcPrevBtn.className = 'carousel-nav-btn prev';
+        backgroundNpcPrevBtn.innerHTML = '&#10094;';
+        backgroundNpcPrevBtn.onclick = () => moveBackgroundNpcCarousel(-1);
+
+        const backgroundNpcNextBtn = document.createElement('button');
+        backgroundNpcNextBtn.className = 'carousel-nav-btn next';
+        backgroundNpcNextBtn.innerHTML = '&#10095;';
+        backgroundNpcNextBtn.onclick = () => moveBackgroundNpcCarousel(1);
+
+        backgroundNpcContainer.appendChild(backgroundNpcPrevBtn);
+        backgroundNpcContainer.appendChild(backgroundNpcNextBtn);
+
+        backgroundNpcCarouselImages = projectData.artwork_gallery.background_and_npc_art.images;
+        backgroundNpcTrack.innerHTML = backgroundNpcCarouselImages.map(img => `<img src="${img}" alt="Background/NPC Art">`).join('');
+        
+        backgroundNpcCarouselIndex = 0;
+        updateBackgroundNpcCarousel();
+        startBackgroundNpcCarouselAutoPlay();
+    }
+
+    // Sage Artwork Carousel
+    if (projectData.artwork_gallery.sage_artwork) {
+        const sageArtworkContainer = sageArtworkTrack.parentElement.parentElement;
+        
+        // Remove old buttons if they exist
+        sageArtworkContainer.querySelectorAll('.carousel-nav-btn').forEach(btn => btn.remove());
+
+        // Create and add navigation buttons
+        const sageArtworkPrevBtn = document.createElement('button');
+        sageArtworkPrevBtn.className = 'carousel-nav-btn prev';
+        sageArtworkPrevBtn.innerHTML = '&#10094;';
+        sageArtworkPrevBtn.onclick = () => moveSageArtworkCarousel(-1);
+
+        const sageArtworkNextBtn = document.createElement('button');
+        sageArtworkNextBtn.className = 'carousel-nav-btn next';
+        sageArtworkNextBtn.innerHTML = '&#10095;';
+        sageArtworkNextBtn.onclick = () => moveSageArtworkCarousel(1);
+
+        sageArtworkContainer.appendChild(sageArtworkPrevBtn);
+        sageArtworkContainer.appendChild(sageArtworkNextBtn);
+
+        sageArtworkCarouselImages = projectData.artwork_gallery.sage_artwork.images;
+        sageArtworkTrack.innerHTML = sageArtworkCarouselImages.map(img => `<img src="${img}" alt="Sage Artwork">`).join('');
+        
+        sageArtworkCarouselIndex = 0;
+        updateSageArtworkCarousel();
+        startSageArtworkCarouselAutoPlay();
+    }
+
+    artworkSection.style.display = 'block';
+}
         }
     }
 
@@ -225,6 +310,87 @@ function startCarouselAutoPlay() {
     carouselTimer = setInterval(() => {
         carouselIndex = (carouselIndex + 1) % carouselImages.length;
         updateCarousel();
+    }, 3000); 
+}
+
+// --- Artwork Carousel Controls ---
+
+function updateArtworkCarousel() {
+    const track = document.getElementById('artwork-carousel-track');
+    if (track && artworkCarouselImages.length > 0) {
+        const percentage = artworkCarouselIndex * 100;
+        track.style.transform = `translateX(-${percentage}%)`;
+    }
+}
+
+function moveArtworkCarousel(n) {
+    clearInterval(artworkCarouselTimer); 
+    artworkCarouselIndex += n;
+    if (artworkCarouselIndex >= artworkCarouselImages.length) artworkCarouselIndex = 0;
+    if (artworkCarouselIndex < 0) artworkCarouselIndex = artworkCarouselImages.length - 1;
+    updateArtworkCarousel();
+    startArtworkCarouselAutoPlay(); 
+}
+
+function startArtworkCarouselAutoPlay() {
+    clearInterval(artworkCarouselTimer);
+    artworkCarouselTimer = setInterval(() => {
+        artworkCarouselIndex = (artworkCarouselIndex + 1) % artworkCarouselImages.length;
+        updateArtworkCarousel();
+    }, 3000); 
+}
+
+// --- Background and NPC Carousel Controls ---
+
+function updateBackgroundNpcCarousel() {
+    const track = document.getElementById('background-npc-carousel-track');
+    if (track && backgroundNpcCarouselImages.length > 0) {
+        const percentage = backgroundNpcCarouselIndex * 100;
+        track.style.transform = `translateX(-${percentage}%)`;
+    }
+}
+
+function moveBackgroundNpcCarousel(n) {
+    clearInterval(backgroundNpcCarouselTimer); 
+    backgroundNpcCarouselIndex += n;
+    if (backgroundNpcCarouselIndex >= backgroundNpcCarouselImages.length) backgroundNpcCarouselIndex = 0;
+    if (backgroundNpcCarouselIndex < 0) backgroundNpcCarouselIndex = backgroundNpcCarouselImages.length - 1;
+    updateBackgroundNpcCarousel();
+    startBackgroundNpcCarouselAutoPlay(); 
+}
+
+function startBackgroundNpcCarouselAutoPlay() {
+    clearInterval(backgroundNpcCarouselTimer);
+    backgroundNpcCarouselTimer = setInterval(() => {
+        backgroundNpcCarouselIndex = (backgroundNpcCarouselIndex + 1) % backgroundNpcCarouselImages.length;
+        updateBackgroundNpcCarousel();
+    }, 3000); 
+}
+
+// --- Sage Artwork Carousel Controls ---
+
+function updateSageArtworkCarousel() {
+    const track = document.getElementById('sage-artwork-carousel-track');
+    if (track && sageArtworkCarouselImages.length > 0) {
+        const percentage = sageArtworkCarouselIndex * 100;
+        track.style.transform = `translateX(-${percentage}%)`;
+    }
+}
+
+function moveSageArtworkCarousel(n) {
+    clearInterval(sageArtworkCarouselTimer); 
+    sageArtworkCarouselIndex += n;
+    if (sageArtworkCarouselIndex >= sageArtworkCarouselImages.length) sageArtworkCarouselIndex = 0;
+    if (sageArtworkCarouselIndex < 0) sageArtworkCarouselIndex = sageArtworkCarouselImages.length - 1;
+    updateSageArtworkCarousel();
+    startSageArtworkCarouselAutoPlay(); 
+}
+
+function startSageArtworkCarouselAutoPlay() {
+    clearInterval(sageArtworkCarouselTimer);
+    sageArtworkCarouselTimer = setInterval(() => {
+        sageArtworkCarouselIndex = (sageArtworkCarouselIndex + 1) % sageArtworkCarouselImages.length;
+        updateSageArtworkCarousel();
     }, 3000); 
 }
 
