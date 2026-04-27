@@ -87,6 +87,65 @@ function showPage(pageId, projectData = null) {
                 galleryGrid.innerHTML = '';
             }
 
+            // Reset detail page state before project-specific sections
+            const galleryTitle = document.querySelector('.full-width-gallery h4');
+            if (galleryTitle) galleryTitle.innerText = "Project Screenshots";
+            document.querySelectorAll('.final-designs-gallery').forEach(el => el.remove());
+            document.querySelectorAll('.printed-cards-section').forEach(el => el.remove());
+
+            // Special handling for Character Cards
+            if (projectData.title === "Character Cards") {
+                if (galleryTitle) galleryTitle.innerText = "Work in Progress";
+
+                if (projectData.card_designs && projectData.card_designs.length > 0) {
+                    const finalGalleryHTML = `
+                        <div class="full-width-gallery final-designs-gallery">
+                            <h4>Final Designs</h4>
+                            <div class="card-pairs-grid">
+                                ${projectData.card_designs.map(pair => `
+                                    <div class="card-pair">
+                                        <p class="pair-name">${pair.name}</p>
+                                        <div class="card-pair-images">
+                                            <div class="card-pair-item" onclick="setGalleryAndOpen(['${pair.front}', '${pair.back}'], 0)">
+                                                <img src="${pair.front}" alt="${pair.name} Front">
+                                            </div>
+                                            <div class="card-pair-item" onclick="setGalleryAndOpen(['${pair.front}', '${pair.back}'], 1)">
+                                                <img src="${pair.back}" alt="${pair.name} Back">
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    const existingGallery = document.querySelector('.full-width-gallery');
+                    if (existingGallery) {
+                        existingGallery.insertAdjacentHTML('afterend', finalGalleryHTML);
+                    }
+                }
+
+                if (projectData.printed_cards && projectData.printed_cards.length > 0) {
+                    const printedGalleryHTML = `
+                        <div class="printed-cards-section">
+                            <h4>Printed Card Photos</h4>
+                            <div class="printed-card-grid">
+                                ${projectData.printed_cards.map(img => `
+                                    <div class="printed-card-item">
+                                        <img src="${img}" alt="Printed card photo">
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    const finalGallery = document.querySelector('.final-designs-gallery');
+                    if (finalGallery) {
+                        finalGallery.insertAdjacentHTML('afterend', printedGalleryHTML);
+                    } else if (galleryTitle) {
+                        galleryTitle.parentElement.insertAdjacentHTML('afterend', printedGalleryHTML);
+                    }
+                }
+            }
+
             // 5. Writing Process Injection
             const processContainer = document.getElementById('detail-process');
             if (processContainer) {
@@ -139,6 +198,8 @@ if (drawSection && track && projectData.drawing_process) {
     updateCarousel();
     startCarouselAutoPlay();
     drawSection.style.display = 'block';
+} else if (drawSection) {
+    drawSection.style.display = 'none';
 }
 
 // 7. Artwork Gallery Sliding Carousel Injection
@@ -209,6 +270,8 @@ if (artworkSection && backgroundNpcTrack && sageArtworkTrack && projectData.artw
     }
 
     artworkSection.style.display = 'block';
+} else if (artworkSection) {
+    artworkSection.style.display = 'none';
 }
         }
     }
@@ -228,13 +291,14 @@ if (artworkSection && backgroundNpcTrack && sageArtworkTrack && projectData.artw
 async function loadProjects() {
     try {
         const response = await fetch('./projects.json');
-        const projects = await response.json();
+        const data = await response.json();
+        window.otherWorks = data.other_works; // Make other works globally accessible
         const grid = document.querySelector('.project-grid');
         
         if (!grid) return;
         grid.innerHTML = '';
 
-        projects.forEach(project => {
+        data.highlighted.forEach(project => {
             const card = document.createElement('article');
             card.className = 'project-card';
             card.onclick = () => showPage('project-detail', project);
@@ -251,9 +315,29 @@ async function loadProjects() {
             `;
             grid.appendChild(card);
         });
+
+        // Load other works
+        loadOtherWorks(data.other_works);
     } catch (error) {
         console.error("Error loading project data:", error);
     }
+}
+
+/**
+ * Loads other works from JSON
+ */
+function loadOtherWorks(works) {
+    const list = document.getElementById('other-works-list');
+    if (!list) return;
+    list.innerHTML = works.map((work, index) => `
+        <div class="other-work-item" onclick="showPage('project-detail', window.otherWorks[${index}])">
+            <h3>${work.title}</h3>
+            <p>${work.description}</p>
+            <div class="tags">
+                ${work.tags.map(tag => `<span>${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
 }
 
 // --- Modal Gallery Controls ---
@@ -267,6 +351,11 @@ function openModal(index) {
         modalImg.src = currentGallery[currentImageIndex];
         document.body.style.overflow = "hidden";
     }
+}
+
+function setGalleryAndOpen(gallery, index) {
+    currentGallery = gallery;
+    openModal(index);
 }
 
 function closeModal() {

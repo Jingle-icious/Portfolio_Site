@@ -250,7 +250,79 @@ body {
 .legend-item { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); }
 .legend-item strong { color: var(--accent); margin-right: 6px; }
 
-/* --- RESPONSIVE --- */
+/* --- Other Works Section --- */
+.other-works {
+    padding: 40px 5% 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.other-works h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.other-works-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.other-work-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: var(--transition);
+}
+
+.other-work-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.other-work-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.other-work-item p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.other-work-item .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.other-work-item .tags span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.other-work-item .link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.other-work-item .link:hover {
+    text-decoration: underline;
+}
 @media (max-width: 1200px) {
     .about-container { grid-template-columns: 1fr 1fr; }
     .image-column { display: none; } /* Hide image on tablet to keep text/timeline legible */
@@ -264,9 +336,9 @@ body {
 }
 
 .full-width-gallery {
-    max-width: 1400px;
+    width: min(100%, 1780px);
     margin: 4rem auto 0;
-    padding-top: 3rem;
+    padding: 3rem 3rem 0;
     border-top: 1px solid var(--border);
 }
 
@@ -282,6 +354,122 @@ body {
        and up to 3 or 4 on desktop */
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
     gap: 1.5rem;
+}
+
+.card-pairs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+    justify-items: stretch;
+    grid-auto-rows: 1fr;
+}
+
+.card-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.25rem;
+    min-width: 260px;
+    overflow: hidden;
+}
+
+.card-pair-images {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    min-height: 0;
+}
+
+.card-pair-item {
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    min-height: 240px;
+    aspect-ratio: 3 / 4;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 1280px) {
+    .card-pairs-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .card-pairs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.card-pair-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: var(--bg-alt);
+}
+
+.pair-name {
+    color: var(--text-main);
+    font-weight: 800;
+    text-align: left;
+    letter-spacing: 0.02em;
+    font-size: 1.05rem;
+}
+
+.final-designs-gallery {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    max-width: 100vw;
+    border-color: rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.12);
+    background: rgba(15, 23, 42, 0.95);
+    padding: 3rem calc(5vw + 1rem) 2rem;
+}
+
+.printed-cards-section {
+    margin-top: 2.5rem;
+    padding: 1.8rem;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    border-radius: 16px;
+}
+
+.printed-cards-section h4 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+.printed-cards-section h4 {
+    margin-bottom: 1.5rem;
+}
+
+.printed-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.printed-card-item {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+}
+
+.printed-card-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .gallery-item {

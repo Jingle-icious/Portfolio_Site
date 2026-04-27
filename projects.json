@@ -1,138 +1,187 @@
-[
-  {
-    "title": "Satellite Analytics Workbench",
-    "description": "A high-density data visualization tool featuring complex filtering logic and a master-detail selection area.",
-    "tags": ["UX Design", "Data Viz", "React"],
-    "link": "#",
-    "image": "assets/project1.jpg"
-  },
 {
-  "title": "Through the Quiet Lens",
-  "date": "Capstone 2025",
-  "image": "images/Title_Screenshot.png",
-  "embed": "https://www.youtube.com/embed/YsDHRbhUaVM",
-  "description": "A web-based visual novel exploring student stress and anxiety. Powered by a custom-built, data-driven narrative engine designed for extensible storytelling and branching paths.",
-  "full_description": "Through the Quiet Lens is a web-based visual novel game that explores a theme of mental health with respect to college student stress and anxiety. The storyline narrative allows the player to choose-their-own-adventure by selecting choices to the story's scenarios. Designed with all original art and an easy and intuitive user experience, the gameplay is easy and balances storytelling and visual aesthetics. Featuring a data-driven and extensible narrative engine, the concept can be reused for new storylines catering to a large range of demographics. The richly emotional and introspective journey is grounded in relatable experiences and offers practical and insightful outcomes.",
-  "links": {
-    "play": "https://jingle-icious.github.io/ThroughTheQuietLens/",
-    "github": "https://github.com/Jingle-icious/ThroughTheQuietLens",
-    "figma": "https://www.figma.com/design/tYyZFGn3DawHSbcv8aEPD3/Capstone_Stuff?node-id=0-1"
-  },
-  "tags": [
-    "JavaScript",
-    "JSON",
-    "CSS3",
-    "Narrative Design",
-    "Digital Character Design"
+  "highlighted": [
+    {
+      "title": "Satellite Analytics Workbench",
+      "description": "A high-density data visualization tool featuring complex filtering logic and a master-detail selection area.",
+      "tags": ["UX Design", "Data Viz", "React"],
+      "link": "#",
+      "image": "assets/project1.jpg"
+    },
+    {
+      "title": "Through the Quiet Lens",
+      "date": "Capstone 2025",
+      "image": "images/Title_Screenshot.png",
+      "embed": "https://www.youtube.com/embed/YsDHRbhUaVM",
+      "description": "A web-based visual novel exploring student stress and anxiety. Powered by a custom-built, data-driven narrative engine designed for extensible storytelling and branching paths.",
+      "full_description": "Through the Quiet Lens is a web-based visual novel game that explores a theme of mental health with respect to college student stress and anxiety. The storyline narrative allows the player to choose-their-own-adventure by selecting choices to the story's scenarios. Designed with all original art and an easy and intuitive user experience, the gameplay is easy and balances storytelling and visual aesthetics. Featuring a data-driven and extensible narrative engine, the concept can be reused for new storylines catering to a large range of demographics. The richly emotional and introspective journey is grounded in relatable experiences and offers practical and insightful outcomes.",
+      "links": {
+        "play": "https://jingle-icious.github.io/ThroughTheQuietLens/",
+        "github": "https://github.com/Jingle-icious/ThroughTheQuietLens",
+        "figma": "https://www.figma.com/design/tYyZFGn3DawHSbcv8aEPD3/Capstone_Stuff?node-id=0-1"
+      },
+      "tags": [
+        "JavaScript",
+        "JSON",
+        "CSS3",
+        "Narrative Design",
+        "Digital Character Design"
+      ],
+      "features": [
+        "Custom-built JSON-driven narrative engine",
+        "Branching dialogue and state-based story paths",
+        "Original character design and digital assets",
+        "Optimized UI/UX for immersive storytelling"
+      ],
+      "gallery": [
+        "images/Title_Screenshot.png",
+        "images/screenshot_1.gif",
+        "images/screenshot_2.webp",
+        "images/screenshot_3.png",
+        "images/screenshot_4.webp",
+        "images/screenshot_5.webp",
+        "images/screenshot_6.webp",
+        "images/screenshot_7.webp",
+        "images/screenshot_8.webp",
+        "images/screenshot_9.gif",
+        "images/screenshot_10.webp",
+        "images/screenshot_11.webp"
+      ],
+      "writing_process": {
+        "title": "The process of writing the story:",
+        "content": "The story writing was really the \"main\" part of this project, going through multiple iterations, edits, changes, etc. Many parts of the story were written, re-written, changed, as I got a feel for how the narrative should go and how I wanted Sage's story to conclude. Writing out different choices, different paths, different coping strategies—so much time and research went into the narrative to make it feel truly relatable, but also truly real.",
+        "doc_link": "https://docs.google.com/document/d/13oNTI3CSR1Ab4wP24_doKbEUUe_M5naSsfzUkdG8xh0/edit?tab=t.0#heading=h.rfi0czht8m99",
+        "link_text": "See my living script Google Doc."
+      },
+      "drawing_process": {
+        "title": "The process of drawing Sage:",
+        "description": "All my drawings were done on my iPad using the software MediBang. Below is the drawing process for Variant 1 (Main) of Sage, from line-art to completion.",
+        "steps": [
+          "images/sage_process_1.webp",
+          "images/sage_process_2.webp",
+          "images/sage_process_3.webp",
+          "images/sage_process_4.webp",
+          "images/sage_process_5.webp",
+          "images/sage_process_6.webp"
+        ]
+      },
+      "artwork_gallery": {
+        "title": "Artwork Gallery",
+        "description": "All drawings that I created for the project. Starting with background images, then NPCS, then Sage variants.",
+        "background_and_npc_art": {
+          "title": "Background and NPC Art",
+          "images": [
+            "images/Background_Images/Title_Official.png",
+            "images/Background_Images/Campus_Main.png",
+            "images/Background_Images/Lobby_Main.png",
+            "images/Background_Images/Dorm_Main.png",
+            "images/Background_Images/Dorm_Sage_Sitting.png",
+            "images/Background_Images/Dorm_Sage_Sleeping.png",
+            "images/Background_Images/Classroom_Main.png",
+            "images/Background_Images/Dream1.png",
+            "images/Background_Images/Smoke_Backround.png",
+            "images/Background_Images/Dream1_banner.png",
+            "images/Background_Images/Dream_Ferris_Main.png",
+            "images/Background_Images/Dream_Eatery_Main.png",
+            "images/Background_Images/Dream_PerfContest_Main.png",
+            "images/Background_Images/Dream_Pie_Main.png",
+            "images/Background_Images/HappyArt.png",
+            "images/Background_Images/StressArt.png",
+            "images/NPC_Images/Blake_Smile.png",
+            "images/NPC_Images/Blake_Frown.png",
+            "images/NPC_Images/Blake_Ooh.png",
+            "images/NPC_Images/Blake_Talk.png",
+            "images/NPC_Images/NPC1.png",
+            "images/NPC_Images/NPC2.png",
+            "images/NPC_Images/NPC3_sil.png",
+            "images/NPC_Images/Sharma_smile.png",
+            "images/NPC_Images/Sharma_frown.png",
+            "images/NPC_Images/Sharma_slightfrown.png",
+            "images/NPC_Images/Sharma_ooh.png",
+            "images/NPC_Images/Sharma_talk.png"
+          ]
+        },
+        "sage_artwork": {
+          "title": "Sage Artwork",
+          "images": [
+            "images/Sage_Images/SageVar1_smile.png",
+            "images/Sage_Images/SageVar1_frown.png",
+            "images/Sage_Images/SageVar1_surprised.png",
+            "images/Sage_Images/SageVar1_talk.png",
+            "images/Sage_Images/SageVar1_sil.png",
+            "images/Sage_Images/SageVar3_closedmouth.png",
+            "images/Sage_Images/SageVar3_crying.png",
+            "images/Sage_Images/SageVar3_glazedover.png",
+            "images/Sage_Images/SageVar3_squigglemouth.png",
+            "images/Sage_Images/SageVar3_stressteeth.png",
+            "images/Sage_Images/SageVar3_talk.png",
+            "images/Sage_Images/SageVar4_antisocial.png",
+            "images/Sage_Images/SageVar4_antisocial_bubble.png",
+            "images/Sage_Images/SageVar5_perfectionist.png",
+            "images/Sage_Images/SageVar5_perfectionist_bubble.png",
+            "images/Sage_Images/SageVar6_imposter_teeth.png",
+            "images/Sage_Images/SageVar6_imposter_bubble.png",
+            "images/Sage_Images/SageVar7_pleaser_smile.png",
+            "images/Sage_Images/SageVar7_pleaser_frown.png",
+            "images/Sage_Images/SageVar7_pleaser_talk.png",
+            "images/Sage_Images/SageVar7_Pleaser_bubble.png"
+          ]
+        }
+      }
+    },
+    {
+      "title": "Animal Shelter Operations",
+      "description": "A comprehensive policy and workflow redesign for animal relinquishment and adoption event procedures.",
+      "tags": ["Service Design", "Policy", "UXR"],
+      "link": "#",
+      "image": "assets/project3.jpg"
+    }
   ],
-  "features": [
-    "Custom-built JSON-driven narrative engine",
-    "Branching dialogue and state-based story paths",
-    "Original character design and digital assets",
-    "Optimized UI/UX for immersive storytelling"
-  ],
-  "gallery": [
-    "images/Title_Screenshot.png",
-    "images/screenshot_1.gif",
-    "images/screenshot_2.webp",
-    "images/screenshot_3.png",
-    "images/screenshot_4.webp",
-    "images/screenshot_5.webp",
-    "images/screenshot_6.webp",
-    "images/screenshot_7.webp",
-    "images/screenshot_8.webp",
-    "images/screenshot_9.gif",
-    "images/screenshot_10.webp",
-    "images/screenshot_11.webp"
-  ],
-  "writing_process": {
-    "title": "The process of writing the story:",
-    "content": "The story writing was really the \"main\" part of this project, going through multiple iterations, edits, changes, etc. Many parts of the story were written, re-written, changed, as I got a feel for how the narrative should go and how I wanted Sage's story to conclude. Writing out different choices, different paths, different coping strategies—so much time and research went into the narrative to make it feel truly relatable, but also truly real.",
-    "doc_link": "https://docs.google.com/document/d/13oNTI3CSR1Ab4wP24_doKbEUUe_M5naSsfzUkdG8xh0/edit?tab=t.0#heading=h.rfi0czht8m99",
-    "link_text": "See my living script Google Doc."
-  },
-  "drawing_process": {
-    "title": "The process of drawing Sage:",
-    "description": "All my drawings were done on my iPad using the software MediBang. Below is the drawing process for Variant 1 (Main) of Sage, from line-art to completion.",
-    "steps": [
-        "images/sage_process_1.webp",
-        "images/sage_process_2.webp",
-        "images/sage_process_3.webp",
-        "images/sage_process_4.webp",
-        "images/sage_process_5.webp",
-        "images/sage_process_6.webp"
-    ]
-},
-  "artwork_gallery": {
-    "title": "Artwork Gallery",
-    "description": "All drawings that I created for the project. Starting with background images, then NPCS, then Sage variants.",
-    "background_and_npc_art": {
-      "title": "Background and NPC Art",
-      "images": [
-        "images/Background_Images/Title_Official.png",
-        "images/Background_Images/Campus_Main.png",
-        "images/Background_Images/Lobby_Main.png",
-        "images/Background_Images/Dorm_Main.png",
-        "images/Background_Images/Dorm_Sage_Sitting.png",
-        "images/Background_Images/Dorm_Sage_Sleeping.png",
-        "images/Background_Images/Classroom_Main.png",
-        "images/Background_Images/Dream1.png",
-        "images/Background_Images/Smoke_Backround.png",
-        "images/Background_Images/Dream1_banner.png",
-        "images/Background_Images/Dream_Ferris_Main.png",
-        "images/Background_Images/Dream_Eatery_Main.png",
-        "images/Background_Images/Dream_PerfContest_Main.png",
-        "images/Background_Images/Dream_Pie_Main.png",
-        "images/Background_Images/HappyArt.png",
-        "images/Background_Images/StressArt.png",
-        "images/NPC_Images/Blake_Smile.png",
-        "images/NPC_Images/Blake_Frown.png",
-        "images/NPC_Images/Blake_Ooh.png",
-        "images/NPC_Images/Blake_Talk.png",
-        "images/NPC_Images/NPC1.png",
-        "images/NPC_Images/NPC2.png",
-        "images/NPC_Images/NPC3_sil.png",
-        "images/NPC_Images/Sharma_smile.png",
-        "images/NPC_Images/Sharma_frown.png",
-        "images/NPC_Images/Sharma_slightfrown.png",
-        "images/NPC_Images/Sharma_ooh.png",
-        "images/NPC_Images/Sharma_talk.png"
+  "other_works": [
+    {
+      "title": "Character Cards",
+      "description": "Digital character art designs for D&D characters, formatted as playing-card sized printed cards. Involved digital character design, text layout, and print design.",
+      "full_description": "A collection of character cards designed for Dungeons & Dragons campaigns. Each card features original digital artwork of characters, carefully laid out in a playing-card format suitable for printing. The project involved creating detailed character illustrations, designing text layouts for stats and descriptions, and optimizing designs for print production.",
+      "image": "images/Character_Cards_Images/Vyz_cover_photo.png",
+      "tags": ["Digital Character Design", "Print Design", "Text Layout", "D&D"],
+      "link": "#",
+      "gallery": [
+        "images/Character_Cards_Images/WIP-img1.png",
+        "images/Character_Cards_Images/WIP-img2.png",
+        "images/Character_Cards_Images/WIP-img3.png",
+        "images/Character_Cards_Images/WIP-img4.png"
+      ],
+      "card_designs": [
+        { "name": "Blaize", "front": "images/Character_Cards_Images/Blaize.webp", "back": "images/Character_Cards_Images/BlaizeBack.webp" },
+        { "name": "Elowynne", "front": "images/Character_Cards_Images/Elowynne.webp", "back": "images/Character_Cards_Images/ElowynneBack.webp" },
+        { "name": "Jynx", "front": "images/Character_Cards_Images/Jynx.webp", "back": "images/Character_Cards_Images/JynxBack.webp" },
+        { "name": "Kafsi", "front": "images/Character_Cards_Images/Kafsi.webp", "back": "images/Character_Cards_Images/KafsiBack.webp" },
+        { "name": "Ramil", "front": "images/Character_Cards_Images/Ramil.webp", "back": "images/Character_Cards_Images/RamilBack.webp" },
+        { "name": "Rhea", "front": "images/Character_Cards_Images/Rhea.webp", "back": "images/Character_Cards_Images/RheaBack.webp" },
+        { "name": "Valerian", "front": "images/Character_Cards_Images/Valerian.webp", "back": "images/Character_Cards_Images/ValerianBack.webp" },
+        { "name": "Vyz", "front": "images/Character_Cards_Images/Vyz.png", "back": "images/Character_Cards_Images/VyzBack.webp" }
+      ],
+      "printed_cards": [
+        "images/Character_Cards_Images/VyzCard.png",
+        "images/Character_Cards_Images/VyzCardBack.png"
+      ],
+      "features": [
+        "Original digital character illustrations",
+        "Playing-card sized layout design",
+        "Print-optimized typography and spacing",
+        "D&D character stat integration"
       ]
     },
-    "sage_artwork": {
-      "title": "Sage Artwork",
-      "images": [
-        "images/Sage_Images/SageVar1_smile.png",
-        "images/Sage_Images/SageVar1_frown.png",
-        "images/Sage_Images/SageVar1_surprised.png",
-        "images/Sage_Images/SageVar1_talk.png",
-        "images/Sage_Images/SageVar1_sil.png",
-        "images/Sage_Images/SageVar3_closedmouth.png",
-        "images/Sage_Images/SageVar3_crying.png",
-        "images/Sage_Images/SageVar3_glazedover.png",
-        "images/Sage_Images/SageVar3_squigglemouth.png",
-        "images/Sage_Images/SageVar3_stressteeth.png",
-        "images/Sage_Images/SageVar3_talk.png",
-        "images/Sage_Images/SageVar4_antisocial.png",
-        "images/Sage_Images/SageVar4_antisocial_bubble.png",
-        "images/Sage_Images/SageVar5_perfectionist.png",
-        "images/Sage_Images/SageVar5_perfectionist_bubble.png",
-        "images/Sage_Images/SageVar6_imposter_teeth.png",
-        "images/Sage_Images/SageVar6_imposter_bubble.png",
-        "images/Sage_Images/SageVar7_pleaser_smile.png",
-        "images/Sage_Images/SageVar7_pleaser_frown.png",
-        "images/Sage_Images/SageVar7_pleaser_talk.png",
-        "images/Sage_Images/SageVar7_Pleaser_bubble.png"
-
-      ]
+    {
+      "title": "E-commerce Website",
+      "description": "Developed a responsive e-commerce site with focus on user experience and conversion optimization.",
+      "tags": ["Web Design", "E-commerce", "HTML/CSS"],
+      "link": "https://example.com/ecommerce"
+    },
+    {
+      "title": "Brand Identity Package",
+      "description": "Created a complete brand identity including logo, color palette, and guidelines for a startup.",
+      "tags": ["Branding", "Graphic Design", "Identity"],
+      "link": "https://example.com/brand"
     }
+  ]
 }
-},
-  {
-    "title": "Animal Shelter Operations",
-    "description": "A comprehensive policy and workflow redesign for animal relinquishment and adoption event procedures.",
-    "tags": ["Service Design", "Policy", "UXR"],
-    "link": "#",
-    "image": "assets/project3.jpg"
-  }
-]
