@@ -462,8 +462,10 @@ body {
 
 .printed-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(4, minmax(180px, 220px));
+    justify-content: center;
     gap: 1.5rem;
+    margin: 0 auto;
 }
 
 .printed-card-item {
@@ -471,6 +473,17 @@ body {
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg-card);
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.printed-card-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .printed-card-item img {

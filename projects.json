@@ -1,8 +1,8 @@
 {
   "highlighted": [
     {
-      "title": "Satellite Analytics Workbench",
-      "description": "A high-density data visualization tool featuring complex filtering logic and a master-detail selection area.",
+      "title": "RAPTR Work",
+      "description": "Words",
       "tags": ["UX Design", "Data Viz", "React"],
       "link": "#",
       "image": "assets/project1.jpg"
@@ -162,7 +162,9 @@
       ],
       "printed_cards": [
         "images/Character_Cards_Images/VyzCard.png",
-        "images/Character_Cards_Images/VyzCardBack.png"
+        "images/Character_Cards_Images/VyzCardBack.png",
+        "images/Character_Cards_Images/JynxCard.webp",
+        "images/Character_Cards_Images/JynxCardBack.webp"
       ],
       "features": [
         "Original digital character illustrations",

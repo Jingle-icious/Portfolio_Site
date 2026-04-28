@@ -96,6 +96,7 @@ function showPage(pageId, projectData = null) {
             // Special handling for Character Cards
             if (projectData.title === "Character Cards") {
                 window.cardDesigns = projectData.card_designs; // Store globally to avoid long onclick strings
+                window.printedCards = projectData.printed_cards; // Store printed cards globally
                 if (galleryTitle) galleryTitle.innerText = "Work in Progress";
 
                 if (projectData.card_designs && projectData.card_designs.length > 0) {
@@ -130,8 +131,8 @@ function showPage(pageId, projectData = null) {
                         <div class="printed-cards-section">
                             <h4>Printed Card Photos</h4>
                             <div class="printed-card-grid">
-                                ${projectData.printed_cards.map(img => `
-                                    <div class="printed-card-item">
+                                ${projectData.printed_cards.map((img, index) => `
+                                    <div class="printed-card-item" onclick="setGalleryAndOpen(window.printedCards, ${index})">
                                         <img src="${img}" alt="Printed card photo">
                                     </div>
                                 `).join('')}
