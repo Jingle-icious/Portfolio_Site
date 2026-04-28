@@ -162,6 +162,7 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-family: inherit;
+    z-index: 3000;
 }
 
 .back-btn:hover {
