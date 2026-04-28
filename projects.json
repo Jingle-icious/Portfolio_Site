@@ -174,16 +174,16 @@
       ]
     },
     {
-      "title": "E-commerce Website",
-      "description": "Developed a responsive e-commerce site with focus on user experience and conversion optimization.",
-      "tags": ["Web Design", "E-commerce", "HTML/CSS"],
-      "link": "https://example.com/ecommerce"
+      "title": "Starbucks App Research and Redesign",
+      "description": "Conducted user research and redesigned the Starbucks mobile app to improve user experience and engagement.",
+      "tags": ["UX Research", "UI Design", "Mobile App"],
+      "link": "https://example.com/starbucks-app"
     },
     {
-      "title": "Brand Identity Package",
-      "description": "Created a complete brand identity including logo, color palette, and guidelines for a startup.",
-      "tags": ["Branding", "Graphic Design", "Identity"],
-      "link": "https://example.com/brand"
+      "title": "Other Design Projects",
+      "description": "A collection of other design projects I have worked on, showcasing my versatility and creativity in various design domains.",
+      "tags": ["Branding", "Graphic Design", "Identity", "Sound Design", "Print Design", "Web Design", "UI Design", "UX Research", "Digital Art"],
+      "link": "reallink"
     }
   ]
 }
