@@ -162,6 +162,9 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-family: inherit;
+    position: fixed;
+    top: 80px;
+    left: 5%;
     z-index: 3000;
 }
 
@@ -555,6 +558,7 @@ body {
     color: #fff;
     font-size: 40px;
     cursor: pointer;
+    z-index: 3100;
 }
 
 .modal-prev, .modal-next {
@@ -571,6 +575,7 @@ body {
     border: none;
     border-radius: 50%;
     transition: 0.3s;
+    z-index: 3100;
 }
 
 .modal-prev { left: 5%; }
@@ -579,23 +584,30 @@ body {
 
 .modal-cards {
     display: none;
-    flex-direction: row;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
     justify-content: center;
     align-items: center;
     margin: auto;
-    max-width: 90%;
-    max-height: 80%;
+    width: 90%;
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    padding: 0;
 }
 
 .modal-card-front, .modal-card-back {
-    max-width: 45%;
-    max-height: 100%;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
     object-fit: contain;
     border-radius: 8px;
+    margin: 0;
 }
 
 /* Target the description paragraph in the detail view */
