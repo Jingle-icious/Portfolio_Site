@@ -95,6 +95,7 @@ function showPage(pageId, projectData = null) {
 
             // Special handling for Character Cards
             if (projectData.title === "Character Cards") {
+                window.cardDesigns = projectData.card_designs; // Store globally to avoid long onclick strings
                 if (galleryTitle) galleryTitle.innerText = "Work in Progress";
 
                 if (projectData.card_designs && projectData.card_designs.length > 0) {
@@ -102,14 +103,14 @@ function showPage(pageId, projectData = null) {
                         <div class="full-width-gallery final-designs-gallery">
                             <h4>Final Designs</h4>
                             <div class="card-pairs-grid">
-                                ${projectData.card_designs.map(pair => `
+                                ${projectData.card_designs.map((pair, index) => `
                                     <div class="card-pair">
                                         <p class="pair-name">${pair.name}</p>
                                         <div class="card-pair-images">
-                                            <div class="card-pair-item" onclick="setGalleryAndOpen(['${pair.front}', '${pair.back}'], 0)">
+                                            <div class="card-pair-item" onclick="setCardGallery(window.cardDesigns, ${index})">
                                                 <img src="${pair.front}" alt="${pair.name} Front">
                                             </div>
-                                            <div class="card-pair-item" onclick="setGalleryAndOpen(['${pair.front}', '${pair.back}'], 1)">
+                                            <div class="card-pair-item" onclick="setCardGallery(window.cardDesigns, ${index})">
                                                 <img src="${pair.back}" alt="${pair.name} Back">
                                             </div>
                                         </div>
@@ -346,11 +347,43 @@ function openModal(index) {
     currentImageIndex = index;
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
-    if (modal && modalImg) {
+    const cardContainer = document.querySelector('.modal-cards');
+    if (modal && modalImg && cardContainer) {
         modal.style.display = "block";
-        modalImg.src = currentGallery[currentImageIndex];
         document.body.style.overflow = "hidden";
+        if (typeof currentGallery[index] === 'object') {
+            modalImg.style.display = "none";
+            cardContainer.style.display = "flex";
+            const card = currentGallery[index];
+            document.getElementById('modal-card-front').src = card.front;
+            document.getElementById('modal-card-back').src = card.back;
+        } else {
+            cardContainer.style.display = "none";
+            modalImg.style.display = "block";
+            modalImg.src = currentGallery[currentImageIndex];
+        }
     }
+}
+
+function openCardModal(index) {
+    currentImageIndex = index;
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const cardContainer = document.querySelector('.modal-cards');
+    if (modal && modalImg && cardContainer) {
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+        modalImg.style.display = "none";
+        cardContainer.style.display = "flex";
+        const card = currentGallery[index];
+        document.getElementById('modal-card-front').src = card.front;
+        document.getElementById('modal-card-back').src = card.back;
+    }
+}
+
+function setCardGallery(cards, index) {
+    currentGallery = cards;
+    openCardModal(index);
 }
 
 function setGalleryAndOpen(gallery, index) {
@@ -371,8 +404,16 @@ function changeImage(n) {
     if (currentImageIndex >= currentGallery.length) currentImageIndex = 0;
     if (currentImageIndex < 0) currentImageIndex = currentGallery.length - 1;
     
-    const modalImg = document.getElementById('modal-img');
-    if (modalImg) modalImg.src = currentGallery[currentImageIndex];
+    if (typeof currentGallery[currentImageIndex] === 'object') {
+        // card
+        const card = currentGallery[currentImageIndex];
+        document.getElementById('modal-card-front').src = card.front;
+        document.getElementById('modal-card-back').src = card.back;
+    } else {
+        // single
+        const modalImg = document.getElementById('modal-img');
+        if (modalImg) modalImg.src = currentGallery[currentImageIndex];
+    }
 }
 
 // --- Drawing Carousel Sliding Controls ---

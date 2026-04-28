@@ -48,7 +48,7 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-.logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 0.1em; color: #fff; }
+.logo { font-weight: 800; font-size: 1.1rem; letter-spacing: 0.1em; color: #fff; text-decoration: none; }
 .nav-links { display: flex; list-style: none; gap: 2.5rem; }
 .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.9rem; transition: var(--transition); cursor: pointer; }
 .nav-links a:hover { color: var(--accent); }
@@ -392,6 +392,14 @@ body {
     aspect-ratio: 3 / 4;
     background: var(--bg-alt);
     border: 1px solid var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.card-pair:hover .card-pair-item {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 1280px) {
@@ -554,6 +562,27 @@ body {
 .modal-prev { left: 5%; }
 .modal-next { right: 5%; }
 .modal-prev:hover, .modal-next:hover { background: var(--accent); }
+
+.modal-cards {
+    display: none;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    max-width: 90%;
+    max-height: 80%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modal-card-front, .modal-card-back {
+    max-width: 45%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
 
 /* Target the description paragraph in the detail view */
 #detail-description p {
