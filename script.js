@@ -275,6 +275,28 @@ if (artworkSection && backgroundNpcTrack && sageArtworkTrack && projectData.artw
 } else if (artworkSection) {
     artworkSection.style.display = 'none';
 }
+
+// Handle sub-projects for collections like "Other Design Projects"
+// Remove existing sub-project sections
+document.querySelectorAll('.sub-project-section').forEach(el => el.remove());
+
+if (projectData.sub_projects) {
+    projectData.sub_projects.forEach(sub => {
+        const subSection = document.createElement('section');
+        subSection.className = 'process-section sub-project-section';
+        subSection.innerHTML = `
+            <div class="short-about-content">
+                <h2>${sub.title}</h2>
+                <p>${sub.description}</p>
+                <div class="screenshot-grid">
+                    ${sub.images.map((img, index) => `<img src="${img}" alt="${sub.title}" onclick="setGalleryAndOpen(${JSON.stringify(sub.images)}, ${index})" style="cursor: pointer;">`).join('')}
+                </div>
+            </div>
+        `;
+        const detailPage = document.getElementById('project-detail-page');
+        detailPage.appendChild(subSection);
+    });
+}
         }
     }
 

@@ -749,6 +749,12 @@ body {
     transition: var(--transition);
 }
 
+.project-link-btn:hover {
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-2px);
+}
+
 .artwork-subsection {
     margin-bottom: 4rem;
 }
