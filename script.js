@@ -315,28 +315,62 @@ if (projectData.sub_projects) {
     projectData.sub_projects.forEach(sub => {
         const subSection = document.createElement('section');
         subSection.className = 'process-section sub-project-section';
+
+        // Determine media HTML: images gallery or audio player
+        let mediaHTML = '';
+        if (sub.images && sub.images.length > 0) {
+            mediaHTML = `
+                <div class="screenshot-grid">
+                    ${sub.images.map((img, index) => `<div class="gallery-item" data-gallery-index="${index}"><img src="${img}" alt="${sub.title}"></div>`).join('')}
+                </div>
+            `;
+        } else if (sub.audio) {
+            // Use a custom-styled player so the controls match the site
+            const id = `custom-audio-${Math.random().toString(36).slice(2,9)}`;
+            mediaHTML = `
+                <div class="audio-player custom-audio-player" data-audio-id="${id}">
+                    <audio id="${id}" src="${sub.audio}" preload="metadata"></audio>
+                    <div class="audio-controls">
+                        <button class="play-btn" aria-label="Play">▶</button>
+                        <button class="volume-btn" aria-label="Mute"> 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/></svg>
+                        </button>
+                        <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+                        <div class="time">0:00 / 0:00</div>
+                        <div class="progress-wrap"><div class="progress-bar"><div class="progress-filled"></div><div class="progress-thumb"></div></div></div>
+                        <a class="audio-download" href="${sub.audio}" download>Download</a>
+                    </div>
+                </div>
+            `;
+        }
+
         subSection.innerHTML = `
             <div class="short-about-content">
                 <h2>${sub.title}</h2>
                 <p>${sub.description}</p>
-                <div class="screenshot-grid">
-                    ${sub.images.map((img, index) => `<div class="gallery-item" data-gallery-index="${index}"><img src="${img}" alt="${sub.title}"></div>`).join('')}
-                </div>
+                ${mediaHTML}
             </div>
         `;
+
         const detailPage = document.getElementById('project-detail-page');
         detailPage.appendChild(subSection);
-        
-        // Add click listeners for gallery items
-        const galleryItems = subSection.querySelectorAll('.gallery-item');
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const index = parseInt(this.dataset.galleryIndex);
-                setGalleryAndOpen(sub.images, index);
-                this.style.cursor = 'pointer';
+
+        // If this sub-project has images, wire up gallery click handlers
+        if (sub.images && sub.images.length > 0) {
+            const galleryItems = subSection.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.galleryIndex);
+                    setGalleryAndOpen(sub.images, index);
+                });
+                item.style.cursor = 'pointer';
             });
-            item.style.cursor = 'pointer';
-        });
+        }
+
+        // If this sub-project has audio, initialize the custom player
+        if (sub.audio) {
+            initCustomAudio(subSection);
+        }
     });
 }
         }
@@ -611,3 +645,132 @@ window.addEventListener('DOMContentLoaded', () => {
     loadProjects();
     showPage('home');
 });
+
+// --- Custom Audio Player Helpers ---
+window.currentlyPlayingAudio = null;
+
+function formatTime(seconds) {
+    if (!isFinite(seconds)) return '0:00';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+function initCustomAudio(container) {
+    const audioEl = container.querySelector('audio');
+    if (!audioEl) return;
+
+    const playBtn = container.querySelector('.play-btn');
+    const timeEl = container.querySelector('.time');
+    const progressWrap = container.querySelector('.progress-wrap');
+    const progressBar = container.querySelector('.progress-bar');
+    const progressFilled = container.querySelector('.progress-filled');
+    const progressThumb = container.querySelector('.progress-thumb');
+    const volumeRange = container.querySelector('.volume');
+
+    const playSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>';
+    const pauseSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="4" width="4" height="16" fill="currentColor"/><rect x="15" y="4" width="4" height="16" fill="currentColor"/></svg>';
+    // initialize button icon
+    playBtn.innerHTML = playSVG;
+    const volumeBtn = container.querySelector('.volume-btn');
+    const volumeOnSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M19 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const volumeOffSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    if (volumeBtn) volumeBtn.innerHTML = volumeOnSVG;
+
+    function updateTimeDisplay() {
+        const dur = audioEl.duration;
+        timeEl.textContent = `${formatTime(audioEl.currentTime)} / ${formatTime(dur)} `;
+    }
+
+    function updateProgress() {
+        if (!isFinite(audioEl.duration) || audioEl.duration === 0) {
+            progressFilled.style.width = '0%';
+            return;
+        }
+        const pct = (audioEl.currentTime / audioEl.duration) * 100;
+        progressFilled.style.width = `${pct}%`;
+        updateTimeDisplay();
+        // update thumb to current position (for small indicator)
+        if (progressThumb) progressThumb.style.left = `${pct}%`;
+    }
+
+    function togglePlay() {
+        if (audioEl.paused) {
+            // pause any other playing audio
+            if (window.currentlyPlayingAudio && window.currentlyPlayingAudio !== audioEl) {
+                try { window.currentlyPlayingAudio.pause(); } catch (e) {}
+            }
+            audioEl.play();
+            window.currentlyPlayingAudio = audioEl;
+        } else {
+            audioEl.pause();
+        }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+
+    audioEl.addEventListener('play', () => { playBtn.innerHTML = pauseSVG; container.classList.add('playing'); });
+    audioEl.addEventListener('pause', () => { playBtn.innerHTML = playSVG; container.classList.remove('playing'); });
+    audioEl.addEventListener('timeupdate', updateProgress);
+    audioEl.addEventListener('loadedmetadata', () => { updateTimeDisplay(); });
+
+    // Seek when clicking the progress bar container
+    if (progressWrap) {
+        progressWrap.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const pct = Math.max(0, Math.min(1, x / rect.width));
+            if (isFinite(audioEl.duration)) audioEl.currentTime = pct * audioEl.duration;
+        });
+
+        // hover thumb for scrubbing feedback (position only; visibility controlled by CSS :hover)
+        if (progressThumb) {
+            progressBar.addEventListener('mousemove', (e) => {
+                const rect = progressBar.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const pct = Math.max(0, Math.min(1, x / rect.width));
+                progressThumb.style.left = `${pct * 100}%`;
+            });
+        }
+    }
+
+    // volume control
+    if (volumeRange) {
+        // Helper to style the range track with a filled accent color
+        function updateVolumeBackground(val) {
+            const pct = Math.round(val * 100);
+            volumeRange.style.background = `linear-gradient(90deg, var(--accent) ${pct}%, rgba(255,255,255,0.06) ${pct}%)`;
+        }
+        const initialVol = parseFloat(volumeRange.value) || 0.5;
+        audioEl.volume = initialVol;
+        audioEl.muted = false;
+        updateVolumeBackground(initialVol);
+
+        // toggle mute/unmute when pressing volume button
+        if (volumeBtn) {
+            volumeBtn.addEventListener('click', () => {
+                audioEl.muted = !audioEl.muted;
+                if (audioEl.muted) {
+                    volumeBtn.innerHTML = volumeOffSVG;
+                } else {
+                    volumeBtn.innerHTML = volumeOnSVG;
+                }
+            });
+        }
+
+        volumeRange.addEventListener('input', (e) => {
+            const v = parseFloat(e.target.value);
+            audioEl.volume = v;
+            if (audioEl.muted && v > 0) audioEl.muted = false;
+            // update icon depending on volume
+            if (volumeBtn) {
+                if (v === 0) volumeBtn.innerHTML = volumeOffSVG;
+                else volumeBtn.innerHTML = volumeOnSVG;
+            }
+            updateVolumeBackground(v);
+        });
+    }
+
+    // Ensure time updates if metadata already loaded
+    if (audioEl.readyState >= 1) updateTimeDisplay();
+}
