@@ -49,13 +49,17 @@ function showPage(pageId, projectData = null) {
                     <iframe width="100%" height="100%" src="${projectData.embed}" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
                     encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            } else {
+            } else if (projectData.image) {
                 imageFrame.innerHTML = `<img src="${projectData.image}" class="profile-img" alt="${projectData.title}">`;
+            } else {
+                imageFrame.innerHTML = '';
             }
 
             // 3. Features & Links (STABLE)
             const featuresContainer = document.getElementById('detail-features');
             let linksHTML = '';
+            let featuresHTML = '';
+
             if (projectData.links) {
                 linksHTML = `
                 <div class="detail-links-container">
@@ -68,11 +72,38 @@ function showPage(pageId, projectData = null) {
                 </div>`;
             }
 
+            if (projectData.features && projectData.features.length > 0) {
+                featuresHTML = `<h4 style="text-align: center;">Key Features</h4>
+                    <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>`;
+            }
+
             featuresContainer.innerHTML = `
-                <h4 style="text-align: center;">Key Features</h4>
-                <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                ${featuresHTML}
                 ${linksHTML}
             `;
+
+            const aboutContainer = detailPage.querySelector('.about-container');
+            const aboutColumns = aboutContainer ? aboutContainer.querySelectorAll('.about-column') : [];
+            const hasImage = Boolean(projectData.image || projectData.embed);
+            const hasFeatures = Boolean(projectData.features && projectData.features.length > 0);
+            const hasLinks = Boolean(projectData.links && (projectData.links.play || projectData.links.github || projectData.links.figma));
+            const showFeatureColumn = hasFeatures || hasLinks;
+            const showImageColumn = hasImage;
+
+            if (aboutColumns.length === 3) {
+                aboutColumns[1].style.display = showFeatureColumn ? 'flex' : 'none';
+                aboutColumns[2].style.display = showImageColumn ? 'flex' : 'none';
+
+                if (!showFeatureColumn && !showImageColumn) {
+                    aboutContainer.style.gridTemplateColumns = '1fr';
+                } else if (!showImageColumn) {
+                    aboutContainer.style.gridTemplateColumns = '1.5fr 1fr';
+                } else if (!showFeatureColumn) {
+                    aboutContainer.style.gridTemplateColumns = '1.5fr 360px';
+                } else {
+                    aboutContainer.style.gridTemplateColumns = '1.5fr 1fr 360px';
+                }
+            }
 
             // 4. Screenshot Gallery Injection
             const galleryGrid = document.getElementById('detail-gallery');
@@ -289,7 +320,7 @@ if (projectData.sub_projects) {
                 <h2>${sub.title}</h2>
                 <p>${sub.description}</p>
                 <div class="screenshot-grid">
-                    ${sub.images.map((img, index) => `<img src="${img}" alt="${sub.title}" onclick="setGalleryAndOpen(${JSON.stringify(sub.images)}, ${index})" style="cursor: pointer;">`).join('')}
+                    ${sub.images.map((img, index) => `<div class="gallery-item" onclick="setGalleryAndOpen(${JSON.stringify(sub.images)}, ${index})"><img src="${img}" alt="${sub.title}"></div>`).join('')}
                 </div>
             </div>
         `;

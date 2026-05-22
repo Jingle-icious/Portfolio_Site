@@ -189,12 +189,12 @@
           "title": "Pine to the Spine",
           "description": "A beer label design created for a beer brewed by my dad, as part of my Text class project. This involved typography, layout, and branding for a craft beer label.",
           "images": [
-            "images/Other_Projects_Images/Pine2Spinefront.png",
             "images/Other_Projects_Images/Pine2SpineLayout.png",
+            "images/Other_Projects_Images/Pine2Spinefront.png",
             "images/Other_Projects_Images/Pine2SpineMulti.png",
             "images/Other_Projects_Images/Pine2SpineMultiTable.png",
-            "images/Other_Projects_Images/Pine2SpineStuff.webp",
-            "images/Other_Projects_Images/Pine2SpineZOOM.png"
+            "images/Other_Projects_Images/Pine2SpineZOOM.png",
+            "images/Other_Projects_Images/Pine2SpineStuff.webp"
           ]
         }
       ]
