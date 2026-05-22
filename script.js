@@ -320,12 +320,23 @@ if (projectData.sub_projects) {
                 <h2>${sub.title}</h2>
                 <p>${sub.description}</p>
                 <div class="screenshot-grid">
-                    ${sub.images.map((img, index) => `<div class="gallery-item" onclick="setGalleryAndOpen(${JSON.stringify(sub.images)}, ${index})"><img src="${img}" alt="${sub.title}"></div>`).join('')}
+                    ${sub.images.map((img, index) => `<div class="gallery-item" data-gallery-index="${index}"><img src="${img}" alt="${sub.title}"></div>`).join('')}
                 </div>
             </div>
         `;
         const detailPage = document.getElementById('project-detail-page');
         detailPage.appendChild(subSection);
+        
+        // Add click listeners for gallery items
+        const galleryItems = subSection.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const index = parseInt(this.dataset.galleryIndex);
+                setGalleryAndOpen(sub.images, index);
+                this.style.cursor = 'pointer';
+            });
+            item.style.cursor = 'pointer';
+        });
     });
 }
         }
