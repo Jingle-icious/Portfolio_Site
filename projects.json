@@ -186,21 +186,6 @@
       "link": "reallink",
       "sub_projects": [
         {
-          "title": "Staircase Modeling",
-          "description": "3D modeling explorations in SketchUp for my Form class, featuring both grand and spiral staircase designs with various perspectives and rendering techniques.",
-          "images": [
-            "images/Other_Projects_Images/grand_front_perspective_large.jpg",
-            "images/Other_Projects_Images/grand_top_parallel.jpg",
-            "images/Other_Projects_Images/grand_stair_rightside.jpg",
-            "images/Other_Projects_Images/spiral_parallel_front.jpg",
-            "images/Other_Projects_Images/spiral_parallel_side-top.jpg",
-            "images/Other_Projects_Images/spiral_parallel_side_colored.jpg",
-            "images/Other_Projects_Images/spiral_parallel_bottom_color.jpg",
-            "images/Other_Projects_Images/spiral_persp_side.jpg",
-            "images/Other_Projects_Images/spiral_persp_under.jpg"
-          ]
-        },
-        {
           "title": "Pine to the Spine",
           "description": "A beer label design created for a beer brewed by my dad, as part of my Text class project. This involved typography, layout, and branding for a craft beer label.",
           "images": [
@@ -216,6 +201,27 @@
           "title": "Neon City Movement",
           "description": "A midi-type song I created for my Sound class through the web software BeepBox.",
           "audio": "images/Other_Projects_Audio/NeonCityMovement.wav"
+        },
+        {
+          "title": "Game Scene Audio Remake: FFVII Rebirth",
+          "description": "As another project for my Sound class, I had to redo/remake the audio for a scene from a game of my choice. I was playing FFVII Rebirth at the time, so that's what I used! Gameplay footage was my own, and the background song was completely custom-made in BeepBox. Sound effects were found online, and entire scene was put together in Ableton.",
+          "audio": "images/Other_Projects_Audio/Assignment5Song.wav",
+          "video": "images/Other_Projects_Audio/Assignment5.mp4"
+        },
+        {
+          "title": "Staircase Modeling",
+          "description": "3D modeling explorations in SketchUp for my Form class, featuring both grand and spiral staircase designs with various perspectives and rendering techniques.",
+          "images": [
+            "images/Other_Projects_Images/grand_front_perspective_large.jpg",
+            "images/Other_Projects_Images/grand_top_parallel.jpg",
+            "images/Other_Projects_Images/grand_stair_rightside.jpg",
+            "images/Other_Projects_Images/spiral_parallel_front.jpg",
+            "images/Other_Projects_Images/spiral_parallel_side-top.jpg",
+            "images/Other_Projects_Images/spiral_parallel_side_colored.jpg",
+            "images/Other_Projects_Images/spiral_parallel_bottom_color.jpg",
+            "images/Other_Projects_Images/spiral_persp_side.jpg",
+            "images/Other_Projects_Images/spiral_persp_under.jpg"
+          ]
         }
       ]
     }

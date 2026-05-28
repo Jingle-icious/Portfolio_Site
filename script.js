@@ -316,7 +316,7 @@ if (projectData.sub_projects) {
         const subSection = document.createElement('section');
         subSection.className = 'process-section sub-project-section';
 
-        // Determine media HTML: images gallery or audio player
+        // Determine media HTML: images gallery, audio player, or video player
         let mediaHTML = '';
         if (sub.images && sub.images.length > 0) {
             mediaHTML = `
@@ -324,25 +324,35 @@ if (projectData.sub_projects) {
                     ${sub.images.map((img, index) => `<div class="gallery-item" data-gallery-index="${index}"><img src="${img}" alt="${sub.title}"></div>`).join('')}
                 </div>
             `;
-        } else if (sub.audio) {
-            // Use a custom-styled player so the controls match the site
-            const id = `custom-audio-${Math.random().toString(36).slice(2,9)}`;
-            mediaHTML = `
-                <div class="audio-player custom-audio-player" data-audio-id="${id}">
-                    <audio id="${id}" src="${sub.audio}" preload="metadata"></audio>
-                    <div class="audio-controls">
-                        <button class="play-btn" aria-label="Play">▶</button>
-                        <div class="volume-control">
-                            <button class="volume-btn" aria-label="Mute"> 
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/></svg>
-                            </button>
-                            <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+        } else {
+            if (sub.audio) {
+                // Use a custom-styled player so the controls match the site
+                const id = `custom-audio-${Math.random().toString(36).slice(2,9)}`;
+                mediaHTML += `
+                    <div class="audio-player custom-audio-player" data-audio-id="${id}">
+                        <audio id="${id}" src="${sub.audio}" preload="metadata"></audio>
+                        <div class="audio-controls">
+                            <button class="play-btn" aria-label="Play">▶</button>
+                            <div class="volume-control">
+                                <button class="volume-btn" aria-label="Mute"> 
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/></svg>
+                                </button>
+                                <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+                            </div>
+                            <div class="progress-wrap"><div class="progress-bar"><div class="progress-filled"></div><div class="progress-thumb"></div></div></div>
+                            <div class="time">0:00 / 0:00</div>
                         </div>
-                        <div class="progress-wrap"><div class="progress-bar"><div class="progress-filled"></div><div class="progress-thumb"></div></div></div>
-                        <div class="time">0:00 / 0:00</div>
                     </div>
-                </div>
-            `;
+                `;
+            }
+
+            if (sub.video) {
+                mediaHTML += `
+                    <div class="video-player">
+                        <video controls preload="metadata" src="${sub.video}"></video>
+                    </div>
+                `;
+            }
         }
 
         subSection.innerHTML = `
