@@ -235,6 +235,57 @@ body {
     object-fit: cover; /* Ensures image fills the frame without distortion */
     display: block; 
 }
+
+.pdf-viewer, .presentation-viewer {
+    display: none;
+    max-width: 1400px;
+    margin: 3rem auto 0;
+    padding: 1.25rem 1.5rem 0;
+}
+
+.pdf-viewer-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.pdf-viewer-header {
+    padding: 0;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 1.5rem;
+}
+
+.pdf-viewer-header h4 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    line-height: 1.1;
+    color: #fff;
+}
+
+.pdf-description {
+    margin: 1rem auto 0;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 660px;
+}
+
+.pdf-embed,
+.presentation-embed {
+    width: 100%;
+    min-height: 560px;
+    background: #000;
+}
+
+.pdf-embed iframe,
+.presentation-embed iframe {
+    width: 100%;
+    min-height: 560px;
+    border: none;
+}
 /* --- FOOTER --- */
 .legend-footer {
     position: fixed;

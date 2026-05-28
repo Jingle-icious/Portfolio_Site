@@ -118,6 +118,49 @@ function showPage(pageId, projectData = null) {
                 galleryGrid.innerHTML = '';
             }
 
+            // PDF display support for projects that include a report or document
+            const pdfContainer = document.getElementById('detail-pdf');
+            const presentationContainer = document.getElementById('detail-presentation');
+            if (pdfContainer) {
+                if (projectData.pdf) {
+                    pdfContainer.innerHTML = `
+                        <div class="pdf-viewer-card">
+                            <div class="pdf-viewer-header">
+                                <h4>${projectData.pdf_title || 'Audit Report'}</h4>
+                                <p class="pdf-description">${projectData.pdf_description || 'Full audit report for the CLAWS website. Conducted over the span of a semester.'}</p>
+                            </div>
+                            <div class="pdf-embed">
+                                <iframe src="${encodeURI(projectData.pdf)}" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    `;
+                    pdfContainer.style.display = 'block';
+                } else {
+                    pdfContainer.innerHTML = '';
+                    pdfContainer.style.display = 'none';
+                }
+            }
+
+            if (presentationContainer) {
+                if (projectData.presentation_embed) {
+                    presentationContainer.innerHTML = `
+                        <div class="pdf-viewer-card">
+                            <div class="pdf-viewer-header">
+                                <h4>${projectData.presentation_title || 'Audit Presentation'}</h4>
+                                <p class="pdf-description">${projectData.presentation_description || 'Live presentation embed for the CLAWS audit.'}</p>
+                            </div>
+                            <div class="presentation-embed">
+                                <iframe src="${projectData.presentation_embed}" loading="lazy" frameborder="0" allowfullscreen mozallowfullscreen webkitallowfullscreen></iframe>
+                            </div>
+                        </div>
+                    `;
+                    presentationContainer.style.display = 'block';
+                } else {
+                    presentationContainer.innerHTML = '';
+                    presentationContainer.style.display = 'none';
+                }
+            }
+
             // Reset detail page state before project-specific sections
             const galleryTitle = document.querySelector('.full-width-gallery h4');
             if (galleryTitle) galleryTitle.innerText = "Project Screenshots";

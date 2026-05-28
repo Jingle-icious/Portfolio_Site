@@ -129,11 +129,17 @@
       }
     },
     {
-      "title": "Animal Shelter Operations",
-      "description": "A comprehensive policy and workflow redesign for animal relinquishment and adoption event procedures.",
-      "tags": ["Service Design", "Policy", "UXR"],
+      "title": "Animal Shelter Website Redesign",
+      "description": "A comprehensive UX audit and userflow redesign for CLAWS, a cat adoption and relinquishment 501(c)(3).",
+      "tags": ["UX Research", "Userflow Mapping", "UX Design", "Figma"],
       "link": "#",
-      "image": "assets/project3.jpg"
+      "image": "images/CLAWS_Stuff/coverimage.webp",
+      "pdf": "images/CLAWS_Stuff/UX 2 Upchurch - Audit Report - FINAL.pdf",
+      "pdf_title": "Audit Report",
+      "pdf_description": "Full audit report for the CLAWS website. Conducted over the span of a semester.",
+      "presentation_embed": "https://docs.google.com/presentation/d/e/2PACX-1vTGy8_YP6qjTP_Gv4ZwLA8ZpT5EpWDE_Cd-uFCoGYRV6Q2PhJ4aC3qHv6Wvac18jztBS7MjAR4aG-tm/pubembed?start=true&loop=true&delayms=5000",
+      "presentation_title": "Audit Presentation",
+      "presentation_description": "Live Google Slides walkthrough with GIF-rich elements and interaction notes."
     }
   ],
   "other_works": [
