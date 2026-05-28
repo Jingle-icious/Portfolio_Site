@@ -332,13 +332,14 @@ if (projectData.sub_projects) {
                     <audio id="${id}" src="${sub.audio}" preload="metadata"></audio>
                     <div class="audio-controls">
                         <button class="play-btn" aria-label="Play">▶</button>
-                        <button class="volume-btn" aria-label="Mute"> 
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/></svg>
-                        </button>
-                        <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
-                        <div class="time">0:00 / 0:00</div>
+                        <div class="volume-control">
+                            <button class="volume-btn" aria-label="Mute"> 
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/></svg>
+                            </button>
+                            <input class="volume" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Volume">
+                        </div>
                         <div class="progress-wrap"><div class="progress-bar"><div class="progress-filled"></div><div class="progress-thumb"></div></div></div>
-                        <a class="audio-download" href="${sub.audio}" download>Download</a>
+                        <div class="time">0:00 / 0:00</div>
                     </div>
                 </div>
             `;
@@ -673,7 +674,7 @@ function initCustomAudio(container) {
     // initialize button icon
     playBtn.innerHTML = playSVG;
     const volumeBtn = container.querySelector('.volume-btn');
-    const volumeOnSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M19 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    const volumeOnSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M18 7v10M21 5v14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const volumeOffSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
     if (volumeBtn) volumeBtn.innerHTML = volumeOnSVG;
 
