@@ -233,6 +233,7 @@ body {
     width: 100%; 
     height: 100%;
     object-fit: cover; /* Ensures image fills the frame without distortion */
+    object-position: top center; /* Keep the top of the portrait visible */
     display: block; 
 }
 
@@ -817,6 +818,27 @@ body {
 }
 
 .artwork-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+/* --- Fidelity Gallery Styling --- */
+.fidelity-gallery-section {
+    width: min(100%, 1780px);
+    margin: 4rem auto 0;
+    padding: 3rem 3rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.fidelity-subsection {
+    margin-bottom: 4rem;
+}
+
+.fidelity-subtitle {
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-main);

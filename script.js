@@ -72,7 +72,11 @@ function showPage(pageId, projectData = null) {
                 </div>`;
             }
 
-            if (projectData.features && projectData.features.length > 0) {
+            if (projectData.title === "Other Design Projects" && projectData.sub_projects && projectData.sub_projects.length > 0) {
+                // For "Other Design Projects", show sub_project titles as "Key Features"
+                featuresHTML = `<h4 style="text-align: center;">Featured Projects</h4>
+                    <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.sub_projects.map(sp => `<li>${sp.title}</li>`).join('')}</ul>`;
+            } else if (projectData.features && projectData.features.length > 0) {
                 featuresHTML = `<h4 style="text-align: center;">Key Features</h4>
                     <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>`;
             }
@@ -85,7 +89,7 @@ function showPage(pageId, projectData = null) {
             const aboutContainer = detailPage.querySelector('.about-container');
             const aboutColumns = aboutContainer ? aboutContainer.querySelectorAll('.about-column') : [];
             const hasImage = Boolean(projectData.image || projectData.embed);
-            const hasFeatures = Boolean(projectData.features && projectData.features.length > 0);
+            const hasFeatures = Boolean((projectData.title === "Other Design Projects" && projectData.sub_projects && projectData.sub_projects.length > 0) || (projectData.features && projectData.features.length > 0));
             const hasLinks = Boolean(projectData.links && (projectData.links.play || projectData.links.github || projectData.links.figma));
             const showFeatureColumn = hasFeatures || hasLinks;
             const showImageColumn = hasImage;
@@ -350,6 +354,72 @@ if (artworkSection && backgroundNpcTrack && sageArtworkTrack && projectData.artw
     artworkSection.style.display = 'none';
 }
 
+// 8. Fidelity Gallery Injection (for projects like Denver Zoo Redesign)
+document.querySelectorAll('.fidelity-gallery-section').forEach(el => el.remove());
+
+if (projectData.fidelity_gallery) {
+    const fullWidthGallery = document.querySelector('.full-width-gallery');
+    
+    let fidelityHTML = '<div class="fidelity-gallery-section">';
+    
+    // High Fidelity
+    if (projectData.fidelity_gallery.high_fidelity && projectData.fidelity_gallery.high_fidelity.images.length > 0) {
+        window.hfImages = projectData.fidelity_gallery.high_fidelity.images;
+        fidelityHTML += `
+            <div class="fidelity-subsection">
+                <h3 class="fidelity-subtitle">${projectData.fidelity_gallery.high_fidelity.title}</h3>
+                <div class="screenshot-grid">
+                    ${projectData.fidelity_gallery.high_fidelity.images.map((img, index) => `
+                        <div class="gallery-item" onclick="setGalleryAndOpen(window.hfImages, ${index})">
+                            <img src="${img}" alt="High Fidelity ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    // Mid Fidelity
+    if (projectData.fidelity_gallery.mid_fidelity && projectData.fidelity_gallery.mid_fidelity.images.length > 0) {
+        window.mfImages = projectData.fidelity_gallery.mid_fidelity.images;
+        fidelityHTML += `
+            <div class="fidelity-subsection">
+                <h3 class="fidelity-subtitle">${projectData.fidelity_gallery.mid_fidelity.title}</h3>
+                <div class="screenshot-grid">
+                    ${projectData.fidelity_gallery.mid_fidelity.images.map((img, index) => `
+                        <div class="gallery-item" onclick="setGalleryAndOpen(window.mfImages, ${index})">
+                            <img src="${img}" alt="Mid Fidelity ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    // Low Fidelity
+    if (projectData.fidelity_gallery.low_fidelity && projectData.fidelity_gallery.low_fidelity.images.length > 0) {
+        window.lfImages = projectData.fidelity_gallery.low_fidelity.images;
+        fidelityHTML += `
+            <div class="fidelity-subsection">
+                <h3 class="fidelity-subtitle">${projectData.fidelity_gallery.low_fidelity.title}</h3>
+                <div class="screenshot-grid">
+                    ${projectData.fidelity_gallery.low_fidelity.images.map((img, index) => `
+                        <div class="gallery-item" onclick="setGalleryAndOpen(window.lfImages, ${index})">
+                            <img src="${img}" alt="Low Fidelity ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    
+    fidelityHTML += '</div>';
+    
+    if (fullWidthGallery) {
+        fullWidthGallery.insertAdjacentHTML('afterend', fidelityHTML);
+    }
+}
+
 // Handle sub-projects for collections like "Other Design Projects"
 // Remove existing sub-project sections
 document.querySelectorAll('.sub-project-section').forEach(el => el.remove());
@@ -361,7 +431,63 @@ if (projectData.sub_projects) {
 
         // Determine media HTML: images gallery, audio player, or video player
         let mediaHTML = '';
-        if (sub.images && sub.images.length > 0) {
+        if (sub.fidelity_gallery) {
+            // Handle fidelity galleries (HF, MF, LF)
+            mediaHTML = '<div class="fidelity-gallery-section">';
+            
+            if (sub.fidelity_gallery.high_fidelity && sub.fidelity_gallery.high_fidelity.images.length > 0) {
+                const hfKey = `hf_${Math.random().toString(36).slice(2,9)}`;
+                window[hfKey] = sub.fidelity_gallery.high_fidelity.images;
+                mediaHTML += `
+                    <div class="fidelity-subsection">
+                        <h3 class="fidelity-subtitle">${sub.fidelity_gallery.high_fidelity.title}</h3>
+                        <div class="screenshot-grid">
+                            ${sub.fidelity_gallery.high_fidelity.images.map((img, index) => `
+                                <div class="gallery-item" onclick="setGalleryAndOpen(window['${hfKey}'], ${index})">
+                                    <img src="${img}" alt="High Fidelity ${index + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (sub.fidelity_gallery.mid_fidelity && sub.fidelity_gallery.mid_fidelity.images.length > 0) {
+                const mfKey = `mf_${Math.random().toString(36).slice(2,9)}`;
+                window[mfKey] = sub.fidelity_gallery.mid_fidelity.images;
+                mediaHTML += `
+                    <div class="fidelity-subsection">
+                        <h3 class="fidelity-subtitle">${sub.fidelity_gallery.mid_fidelity.title}</h3>
+                        <div class="screenshot-grid">
+                            ${sub.fidelity_gallery.mid_fidelity.images.map((img, index) => `
+                                <div class="gallery-item" onclick="setGalleryAndOpen(window['${mfKey}'], ${index})">
+                                    <img src="${img}" alt="Mid Fidelity ${index + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (sub.fidelity_gallery.low_fidelity && sub.fidelity_gallery.low_fidelity.images.length > 0) {
+                const lfKey = `lf_${Math.random().toString(36).slice(2,9)}`;
+                window[lfKey] = sub.fidelity_gallery.low_fidelity.images;
+                mediaHTML += `
+                    <div class="fidelity-subsection">
+                        <h3 class="fidelity-subtitle">${sub.fidelity_gallery.low_fidelity.title}</h3>
+                        <div class="screenshot-grid">
+                            ${sub.fidelity_gallery.low_fidelity.images.map((img, index) => `
+                                <div class="gallery-item" onclick="setGalleryAndOpen(window['${lfKey}'], ${index})">
+                                    <img src="${img}" alt="Low Fidelity ${index + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            mediaHTML += '</div>';
+        } else if (sub.images && sub.images.length > 0) {
             mediaHTML = `
                 <div class="screenshot-grid">
                     ${sub.images.map((img, index) => `<div class="gallery-item" data-gallery-index="${index}"><img src="${img}" alt="${sub.title}"></div>`).join('')}

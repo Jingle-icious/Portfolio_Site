@@ -187,7 +187,8 @@
     },
     {
       "title": "Other Design Projects",
-      "description": "A collection of other design projects I have worked on, showcasing my versatility and creativity in various design domains.",
+      "description": "A curated collection of creative projects spanning graphic design, audio production, 3D modeling, and UX work. Each piece reflects my approach to problem-solving across different mediums and disciplines.",
+      "image": "images/Evie_Portrait.png",
       "tags": ["Branding", "Graphic Design", "Identity", "Sound Design", "Print Design", "Web Design", "UI Design", "UX Research", "Digital Art"],
       "link": "reallink",
       "sub_projects": [
@@ -213,6 +214,45 @@
           "description": "As another project for my Sound class, I had to redo/remake the audio for a scene from a game of my choice. I was playing FFVII Rebirth at the time, so that's what I used! Gameplay footage was my own, and the background song was completely custom-made in BeepBox. Sound effects were found online, and entire scene was put together in Ableton.",
           "audio": "images/Other_Projects_Audio/Assignment5Song.wav",
           "video": "images/Other_Projects_Audio/Assignment5.mp4"
+        },
+        {
+          "title": "Denver Zoo Redesign Project",
+          "description": "As a project for my UX 1 class, I did a re-design of the Denver Zoo's website.",
+          "fidelity_gallery": {
+            "high_fidelity": {
+              "title": "High Fidelity",
+              "images": [
+                "images/Other_Projects_Images/hf1.png",
+                "images/Other_Projects_Images/hf2.png",
+                "images/Other_Projects_Images/hf3.png",
+                "images/Other_Projects_Images/hf4.png",
+                "images/Other_Projects_Images/hf5.png"
+              ]
+            },
+            "mid_fidelity": {
+              "title": "Mid Fidelity",
+              "images": [
+                "images/Other_Projects_Images/mf1.png",
+                "images/Other_Projects_Images/mf2.png",
+                "images/Other_Projects_Images/mf3.png",
+                "images/Other_Projects_Images/mf4.png",
+                "images/Other_Projects_Images/mf5.png"
+              ]
+            },
+            "low_fidelity": {
+              "title": "Low Fidelity",
+              "images": [
+                "images/Other_Projects_Images/lf1.png",
+                "images/Other_Projects_Images/lf2.png",
+                "images/Other_Projects_Images/lf3.png",
+                "images/Other_Projects_Images/lf4.png",
+                "images/Other_Projects_Images/lf5.png",
+                "images/Other_Projects_Images/lf6.png",
+                "images/Other_Projects_Images/lf7.png",
+                "images/Other_Projects_Images/lf8.png"
+              ]
+            }
+          }
         },
         {
           "title": "Staircase Modeling",
