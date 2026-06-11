@@ -139,7 +139,21 @@
       "pdf_description": "Full audit report for the CLAWS website. Conducted over the span of a semester.",
       "presentation_embed": "https://docs.google.com/presentation/d/e/2PACX-1vTGy8_YP6qjTP_Gv4ZwLA8ZpT5EpWDE_Cd-uFCoGYRV6Q2PhJ4aC3qHv6Wvac18jztBS7MjAR4aG-tm/pubembed?start=true&loop=true&delayms=5000",
       "presentation_title": "Audit Presentation",
-      "presentation_description": "Live Google Slides walkthrough with GIF-rich elements and interaction notes."
+      "presentation_description": "Live Google Slides walkthrough with GIF-rich elements and interaction notes.",
+      "evaluation_steps": [
+        "Persona-Based Analysis",
+        "Heuristics",
+        "Information Architecture",
+        "Visual Design Review",
+        "User Journeys",
+        "Content",
+        "Accessibility Review"
+      ],
+      "gallery": [
+        "images/CLAWS_Stuff/coverimage.webp",
+        "images/CLAWS_Stuff/scopeimage.webp",
+        "images/CLAWS_Stuff/redesign_total.webp"
+      ]
     }
   ],
   "other_works": [
@@ -184,6 +198,114 @@
       "description": "Conducted user research and redesigned the Starbucks mobile app to improve user experience and engagement.",
       "tags": ["UX Research", "UI Design", "Mobile App"],
       "link": "https://example.com/starbucks-app"
+    },
+    {
+      "title": "Digital Art Drawings",
+      "description": "A showcase of my character artwork. All drawings are done on my iPad using the Apple Pencil, in the softwares MediBang and Procreate.",
+      "image": "images/Digital_Artwork/Original_Characters/VJ_PRIDE!.png",
+      "tags": ["Character Design", "Digital Art", "Anime Art", "Anime-Style", "Original Characters", "Fanart"],
+      "link": "#",
+      "digital_art_gallery": {
+        "original_characters": [
+          {
+            "title": "VJ",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/VJ_All_Poses.png",
+              "images/Digital_Artwork/Original_Characters/VJ_Flag.png",
+              "images/Digital_Artwork/Original_Characters/VJ_LITTLE!.png",
+              "images/Digital_Artwork/Original_Characters/VJ_PRIDE!.png"
+            ]
+          },
+          {
+            "title": "Kafsi",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Kafsi_new.png"
+            ]
+          },
+          {
+            "title": "Vymsi",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Vymsi.PNG"
+            ]
+          },
+          {
+            "title": "Kafsi & Vymsi",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Kafsi_&_Vymsi_children.png"
+            ]
+          },
+          {
+            "title": "Kafsi & Eranth",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Kafsi_and_Eranth.png"
+            ]
+          },
+          {
+            "title": "Eranth",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Eranth.jpg"
+            ]
+          },
+          {
+            "title": "Valerian Ereskyl",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Valerian.png"
+            ]
+          },
+          {
+            "title": "Adeline Ereskyl",
+            "images": [
+              "images/Digital_Artwork/Original_Characters/Adeline_Ereskyl.png"
+            ]
+          },
+          { "title": "Contemplation", "images": ["images/Digital_Artwork/Original_Characters/contemplation.png"] },
+          { "title": "Elowynne Spring", "images": ["images/Digital_Artwork/Original_Characters/Elowynne_spring_default.jpg"] },
+          { "title": "Flowering Temptation", "images": ["images/Digital_Artwork/Original_Characters/flowering temptation.png"] },
+          { "title": "Fufu!", "images": ["images/Digital_Artwork/Original_Characters/Fufu!.png"] },
+          { "title": "Jellal", "images": ["images/Digital_Artwork/Original_Characters/Jellal.png"] },
+          { "title": "Jynx", "images": ["images/Digital_Artwork/Original_Characters/Jynx.png"] },
+          { "title": "Luna Vacui", "images": ["images/Digital_Artwork/Original_Characters/luna vacui.png"] },
+          { "title": "Monoxia", "images": ["images/Digital_Artwork/Original_Characters/Monoxia.png"] },
+          { "title": "Nyriel", "images": ["images/Digital_Artwork/Original_Characters/Nyriel.png"] },
+          { "title": "Rhea", "images": ["images/Digital_Artwork/Original_Characters/Rhea.jpg"] },
+          { "title": "Terikk", "images": ["images/Digital_Artwork/Original_Characters/Terikk.png"] },
+          { "title": "Valka", "images": ["images/Digital_Artwork/Original_Characters/Valka.jpg"] },
+          { "title": "Vyzix", "images": ["images/Digital_Artwork/Original_Characters/Vyzix.png"] },
+          { "title": "Whisper", "images": ["images/Digital_Artwork/Original_Characters/Whisper.png"] }
+        ],
+        "real_people": [
+          { "title": "Seneca", "images": ["images/Digital_Artwork/Real_People/Seneca.png"] },
+          { "title": "Evie Portrait", "images": ["images/Digital_Artwork/Real_People/Evie_Portrait.png"] },
+          { "title": "Gnome Evie", "images": ["images/Digital_Artwork/Real_People/Gnome_Evie.png"] },
+          { "title": "Connor", "images": ["images/Digital_Artwork/Real_People/Connor_Drawing_Commission.PNG"] },
+          { "title": "Kyle", "images": ["images/Digital_Artwork/Real_People/Kyle_Drawing_Comission.png"] },
+          { "title": "Shay", "images": ["images/Digital_Artwork/Real_People/Shay_finished.jpg"] },
+          { "title": "Me and Coffee", "images": ["images/Digital_Artwork/Real_People/Drawing_me_coffee.jpg"] },
+          { "title": "Me Work Thinking", "images": ["images/Digital_Artwork/Real_People/Drawing_me_work_thinking.jpg"] },
+          { "title": "Me", "images": ["images/Digital_Artwork/Real_People/DRAWING_OF_MEEE.jpg"] },
+          { "title": "Gabe Birthday", "images": ["images/Digital_Artwork/Real_People/Gabe_bday.png"] },
+          { "title": "Me and Gabe", "images": ["images/Digital_Artwork/Real_People/Me and Gabe.png"] },
+          { "title": "Gabe and Evie", "images": ["images/Digital_Artwork/Real_People/Gabe and Evie.png"] },
+          { "title": "Gavin", "images": ["images/Digital_Artwork/Real_People/IMG_1384.PNG"] }
+        ],
+        "fanart": [
+          {
+            "title": "Asta",
+            "images": [
+              "images/Digital_Artwork/Fanart/Asta Scary.png",
+              "images/Digital_Artwork/Fanart/Chibi Asta.png"
+            ]
+          },
+          { "title": "Allen Timcampy", "images": ["images/Digital_Artwork/Fanart/Allen_Timcampy.jpg"] },
+          { "title": "Dark Pit", "images": ["images/Digital_Artwork/Fanart/Dark Pit.png"] },
+          { "title": "Iruma Evil Cycle", "images": ["images/Digital_Artwork/Fanart/Iruma evil cycle.jpg"] },
+          { "title": "Lavi", "images": ["images/Digital_Artwork/Fanart/Lavi.png"] },
+          { "title": "Natsuki & Motochicka", "images": ["images/Digital_Artwork/Fanart/Natsuki_&_Motochicka.png"] },
+          { "title": "Ollie-Boy", "images": ["images/Digital_Artwork/Fanart/Ollie-Boy.png"] },
+          { "title": "V!Deku", "images": ["images/Digital_Artwork/Fanart/V!Deku.png"] },
+          { "title": "Yugo", "images": ["images/Digital_Artwork/Fanart/Yugo.png"] }
+        ]
+      }
     },
     {
       "title": "Other Design Projects",

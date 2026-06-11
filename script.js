@@ -76,6 +76,9 @@ function showPage(pageId, projectData = null) {
                 // For "Other Design Projects", show sub_project titles as "Key Features"
                 featuresHTML = `<h4 style="text-align: center;">Featured Projects</h4>
                     <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.sub_projects.map(sp => `<li>${sp.title}</li>`).join('')}</ul>`;
+            } else if (projectData.evaluation_steps && projectData.evaluation_steps.length > 0) {
+                featuresHTML = `<h4 style="text-align: center;">Evaluation Steps</h4>
+                    <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.evaluation_steps.map(step => `<li>${step}</li>`).join('')}</ul>`;
             } else if (projectData.features && projectData.features.length > 0) {
                 featuresHTML = `<h4 style="text-align: center;">Key Features</h4>
                     <ul style="max-width: 600px; margin: 0 auto 2rem auto;">${projectData.features.map(f => `<li>${f}</li>`).join('')}</ul>`;
@@ -89,7 +92,7 @@ function showPage(pageId, projectData = null) {
             const aboutContainer = detailPage.querySelector('.about-container');
             const aboutColumns = aboutContainer ? aboutContainer.querySelectorAll('.about-column') : [];
             const hasImage = Boolean(projectData.image || projectData.embed);
-            const hasFeatures = Boolean((projectData.title === "Other Design Projects" && projectData.sub_projects && projectData.sub_projects.length > 0) || (projectData.features && projectData.features.length > 0));
+            const hasFeatures = Boolean((projectData.title === "Other Design Projects" && projectData.sub_projects && projectData.sub_projects.length > 0) || (projectData.evaluation_steps && projectData.evaluation_steps.length > 0) || (projectData.features && projectData.features.length > 0));
             const hasLinks = Boolean(projectData.links && (projectData.links.play || projectData.links.github || projectData.links.figma));
             const showFeatureColumn = hasFeatures || hasLinks;
             const showImageColumn = hasImage;
@@ -111,6 +114,7 @@ function showPage(pageId, projectData = null) {
 
             // 4. Screenshot Gallery Injection
             const galleryGrid = document.getElementById('detail-gallery');
+            const galleryWrapper = document.getElementById('detail-gallery-wrapper');
             if (projectData.gallery && projectData.gallery.length > 0) {
                 currentGallery = projectData.gallery; 
                 galleryGrid.innerHTML = projectData.gallery.map((img, index) => `
@@ -118,8 +122,74 @@ function showPage(pageId, projectData = null) {
                         <img src="${img}" alt="Project Screenshot ${index + 1}">
                     </div>
                 `).join('');
+                if (galleryWrapper) galleryWrapper.style.display = 'block';
             } else {
-                galleryGrid.innerHTML = '';
+                if (galleryGrid) galleryGrid.innerHTML = '';
+                if (galleryWrapper) galleryWrapper.style.display = 'none';
+            }
+
+            // 4b. Digital Art Gallery Injection
+            const digitalArtContainer = document.getElementById('digital-art-gallery');
+            if (digitalArtContainer) {
+                if (projectData.digital_art_gallery) {
+                    const sections = [
+                        { key: 'original_characters', title: 'Original Characters' },
+                        { key: 'real_people', title: 'Real People Renditions' },
+                        { key: 'fanart', title: 'Fanart' }
+                    ];
+
+                    const allGroups = sections.reduce((acc, section) => {
+                        const groups = projectData.digital_art_gallery[section.key] || [];
+                        if (groups.length > 0) {
+                            acc.push({ title: section.title, groups });
+                        }
+                        return acc;
+                    }, []);
+
+                    if (allGroups.length === 0) {
+                        digitalArtContainer.innerHTML = '';
+                        digitalArtContainer.style.display = 'none';
+                    } else {
+                        digitalArtContainer.innerHTML = `
+                            <div class="digital-art-section">
+                                ${allGroups.map(section => `
+                                    <div class="digital-art-category">
+                                        <h4>${section.title}</h4>
+                                        <div class="digital-art-grid">
+                                            ${section.groups.map((group, groupIndex) => `
+                                                ${group.images.map((img, imageIndex) => `
+                                                    <div class="gallery-item digital-art-item" data-section="${section.title.toLowerCase().replace(/\s+/g, '_')}" data-group="${groupIndex}" data-index="${imageIndex}">
+                                                        <img src="${img}" alt="${group.title}">
+                                                        <p class="digital-art-caption">${group.title}</p>
+                                                    </div>
+                                                `).join('')}
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `;
+
+                        digitalArtContainer.style.display = 'block';
+
+                        digitalArtContainer.querySelectorAll('.digital-art-item').forEach(item => {
+                            item.style.cursor = 'pointer';
+                            item.addEventListener('click', () => {
+                                const sectionKey = item.dataset.section;
+                                const groupIndex = Number(item.dataset.group);
+                                const imageIndex = Number(item.dataset.index);
+                                const section = sections.find(s => s.title.toLowerCase().replace(/\s+/g, '_') === sectionKey);
+                                const group = projectData.digital_art_gallery[section.key][groupIndex];
+                                if (group && group.images) {
+                                    setGalleryAndOpen(group.images, imageIndex);
+                                }
+                            });
+                        });
+                    }
+                } else {
+                    digitalArtContainer.innerHTML = '';
+                    digitalArtContainer.style.display = 'none';
+                }
             }
 
             // PDF display support for projects that include a report or document
