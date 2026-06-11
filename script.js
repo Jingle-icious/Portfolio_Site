@@ -156,9 +156,9 @@ function showPage(pageId, projectData = null) {
                                     <div class="digital-art-category">
                                         <h4>${section.title}</h4>
                                         <div class="digital-art-grid">
-                                            ${section.groups.map((group, groupIndex) => `
-                                                ${group.images.map((img, imageIndex) => `
-                                                    <div class="gallery-item digital-art-item" data-section="${section.title.toLowerCase().replace(/\s+/g, '_')}" data-group="${groupIndex}" data-index="${imageIndex}">
+                                            ${section.groups.map((group) => `
+                                                ${group.images.map((img) => `
+                                                    <div class="gallery-item digital-art-item" data-section="${section.title.toLowerCase().replace(/\s+/g, '_')}" data-image="${img}">
                                                         <img src="${img}" alt="${group.title}">
                                                         <p class="digital-art-caption">${group.title}</p>
                                                     </div>
@@ -172,16 +172,21 @@ function showPage(pageId, projectData = null) {
 
                         digitalArtContainer.style.display = 'block';
 
+                        const sectionGalleries = allGroups.reduce((result, section) => {
+                            const flattened = section.groups.flatMap(group => group.images);
+                            result[section.title.toLowerCase().replace(/\s+/g, '_')] = flattened;
+                            return result;
+                        }, {});
+
                         digitalArtContainer.querySelectorAll('.digital-art-item').forEach(item => {
                             item.style.cursor = 'pointer';
                             item.addEventListener('click', () => {
                                 const sectionKey = item.dataset.section;
-                                const groupIndex = Number(item.dataset.group);
-                                const imageIndex = Number(item.dataset.index);
-                                const section = sections.find(s => s.title.toLowerCase().replace(/\s+/g, '_') === sectionKey);
-                                const group = projectData.digital_art_gallery[section.key][groupIndex];
-                                if (group && group.images) {
-                                    setGalleryAndOpen(group.images, imageIndex);
+                                const sectionGallery = sectionGalleries[sectionKey] || [];
+                                const imageSrc = item.dataset.image;
+                                const startIndex = sectionGallery.indexOf(imageSrc);
+                                if (startIndex !== -1) {
+                                    setGalleryAndOpen(sectionGallery, startIndex);
                                 }
                             });
                         });
@@ -894,6 +899,23 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('DOMContentLoaded', () => {
     loadProjects();
     showPage('home');
+
+    const modalPrev = document.querySelector('.modal-prev');
+    const modalNext = document.querySelector('.modal-next');
+
+    if (modalPrev) {
+        modalPrev.addEventListener('click', (event) => {
+            event.stopPropagation();
+            changeImage(-1);
+        });
+    }
+
+    if (modalNext) {
+        modalNext.addEventListener('click', (event) => {
+            event.stopPropagation();
+            changeImage(1);
+        });
+    }
 });
 
 // --- Custom Audio Player Helpers ---
