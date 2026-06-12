@@ -208,14 +208,24 @@
       "digital_art_gallery": {
         "original_characters": [
           {
+            "title": "VJ Character Sheet",
+            "images": ["images/Digital_Artwork/Original_Characters/VJ_All_Poses.png"]
+          },
+          {
             "title": "VJ",
-            "images": [
-              "images/Digital_Artwork/Original_Characters/VJ_All_Poses.png",
-              "images/Digital_Artwork/Original_Characters/VJ_Flag.png",
-              "images/Digital_Artwork/Original_Characters/VJ_LITTLE!.png",
-              "images/Digital_Artwork/Original_Characters/VJ_PRIDE!.png",
-              "images/Digital_Artwork/Original_Characters/VJ_Mugshot.png"
-            ]
+            "images": ["images/Digital_Artwork/Original_Characters/VJ_Flag.png"]
+          },
+          {
+            "title": "Little VJ",
+            "images": ["images/Digital_Artwork/Original_Characters/VJ_LITTLE!.png"]
+          },
+          {
+            "title": "Pride VJ",
+            "images": ["images/Digital_Artwork/Original_Characters/VJ_PRIDE!.png"]
+          },
+          {
+            "title": "VJ's Mugshot",
+            "images": ["images/Digital_Artwork/Original_Characters/VJ_Mugshot.png"]
           },
           {
             "title": "Kafsi",
@@ -275,19 +285,19 @@
           { "title": "Whisper", "images": ["images/Digital_Artwork/Original_Characters/Whisper.png"] }
         ],
         "real_people": [
-          { "title": "Evie Portrait", "images": ["images/Digital_Artwork/Real_People/Evie_Portrait.png"] },
+          { "title": "Evie Portrait 2026", "images": ["images/Digital_Artwork/Real_People/Evie_Portrait.png"] },
+          { "title": "Evie PFP 2024", "images": ["images/Digital_Artwork/Real_People/Drawing_me_work_thinking.jpg"] },
+          { "title": "Evie Portrait 2023", "images": ["images/Digital_Artwork/Real_People/Drawing_me_coffee.jpg"] },
+          { "title": "Evie PFP 2021", "images": ["images/Digital_Artwork/Real_People/DRAWING_OF_MEEE.jpg"] },
           { "title": "Gnome Evie", "images": ["images/Digital_Artwork/Real_People/Gnome_Evie.png"] },
+          { "title": "Evie and Gabe 2022", "images": ["images/Digital_Artwork/Real_People/Me and Gabe.png"] },
+          { "title": "Evie and Gabe 2025", "images": ["images/Digital_Artwork/Real_People/Gabe and Evie.png"] },
           { "title": "Connor", "images": ["images/Digital_Artwork/Real_People/Connor_Drawing_Commission.PNG"] },
           { "title": "Kyle", "images": ["images/Digital_Artwork/Real_People/Kyle_Drawing_Comission.png"] },
           { "title": "Karyn", "images": ["images/Digital_Artwork/Real_People/Karyn_signature.png"] },
           { "title": "Steve", "images": ["images/Digital_Artwork/Real_People/Steve_signature.png"] },
           { "title": "Shay", "images": ["images/Digital_Artwork/Real_People/Shay_finished.jpg"] },
-          { "title": "Me and Coffee", "images": ["images/Digital_Artwork/Real_People/Drawing_me_coffee.jpg"] },
-          { "title": "Me Work Thinking", "images": ["images/Digital_Artwork/Real_People/Drawing_me_work_thinking.jpg"] },
-          { "title": "Me", "images": ["images/Digital_Artwork/Real_People/DRAWING_OF_MEEE.jpg"] },
           { "title": "Gabe Birthday", "images": ["images/Digital_Artwork/Real_People/Gabe_bday.png"] },
-          { "title": "Me and Gabe", "images": ["images/Digital_Artwork/Real_People/Me and Gabe.png"] },
-          { "title": "Gabe and Evie", "images": ["images/Digital_Artwork/Real_People/Gabe and Evie.png"] },
           { "title": "Gavin", "images": ["images/Digital_Artwork/Real_People/IMG_1384.PNG"] },
           { "title": "Seneca", "images": ["images/Digital_Artwork/Real_People/Seneca.png"] }
         ],
