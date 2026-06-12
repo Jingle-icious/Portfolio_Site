@@ -275,7 +275,6 @@
           { "title": "Whisper", "images": ["images/Digital_Artwork/Original_Characters/Whisper.png"] }
         ],
         "real_people": [
-          { "title": "Seneca", "images": ["images/Digital_Artwork/Real_People/Seneca.png"] },
           { "title": "Evie Portrait", "images": ["images/Digital_Artwork/Real_People/Evie_Portrait.png"] },
           { "title": "Gnome Evie", "images": ["images/Digital_Artwork/Real_People/Gnome_Evie.png"] },
           { "title": "Connor", "images": ["images/Digital_Artwork/Real_People/Connor_Drawing_Commission.PNG"] },
@@ -289,7 +288,8 @@
           { "title": "Gabe Birthday", "images": ["images/Digital_Artwork/Real_People/Gabe_bday.png"] },
           { "title": "Me and Gabe", "images": ["images/Digital_Artwork/Real_People/Me and Gabe.png"] },
           { "title": "Gabe and Evie", "images": ["images/Digital_Artwork/Real_People/Gabe and Evie.png"] },
-          { "title": "Gavin", "images": ["images/Digital_Artwork/Real_People/IMG_1384.PNG"] }
+          { "title": "Gavin", "images": ["images/Digital_Artwork/Real_People/IMG_1384.PNG"] },
+          { "title": "Seneca", "images": ["images/Digital_Artwork/Real_People/Seneca.png"] }
         ],
         "fanart": [
           {
